@@ -45,7 +45,7 @@ const Navigation = ({ onLayout }) => {
     >
       <Link href={"/"}>
         <img
-          src="/globe.svg"
+          src="/therabonnie.png"
           alt=""
           style={{
             width: 40,
@@ -57,19 +57,19 @@ const Navigation = ({ onLayout }) => {
       </Link>
       <ol>
         <li
-          className={path.split("/").includes('vission') ? 'active' : ''}
+          className={path.split("/").includes('services') ? 'active' : ''}
         >
-          <Link href={"/vission"}
+          <Link href={"/services"}
             className={``}
-          >Vission</Link>
+          >Services</Link>
         </li>
-        <li
+        {/* <li
           className={path.split("/").includes('contact') ? 'active' : ''}
         >
           <Link href={"/contact"}
             className={``}
           >Contact</Link>
-        </li>
+        </li> */}
         <li className={path.split("/").includes('about') ? 'active' : ''}
         >
           <Link href={"/about"}

@@ -8,6 +8,7 @@ const InputText = React.forwardRef((props, ref) => {
     const {
         label,
         color,
+        inputColor,
         padding,
         name,
         disabled,
@@ -136,7 +137,7 @@ const InputText = React.forwardRef((props, ref) => {
                             disabled={disabled}
                             autoComplete={props.autoComplete}
                             autoFocus={props.autoFocus}
-                            style={{ padding }}
+                            style={{ padding, color: inputColor }}
                             maxLength={props.maxLength}
                         // onFocus={ handleFocus }
                         // onBlur={ handleBlue }
@@ -162,6 +163,9 @@ const InputTextStyle = styled.input`
     outline: none;
     border: unset;
     background: transparent;
+    &::-webkit-calendar-picker-indicator {
+        background-color: black;
+    }
     &::placeholder {
         font-weight: 400;
         color: black;

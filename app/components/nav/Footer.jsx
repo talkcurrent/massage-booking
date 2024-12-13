@@ -23,22 +23,22 @@ const Footer = () => {
                 style={{
                     background: '#0a0f15',
                     color: 'white',
-                    padding: `0 ${((5 / 100) * deviceWidth)}px`,
+                    padding: `20px ${((5 / 100) * deviceWidth)}px`,
                     display: 'grid',
                     gridTemplateColumns: 'auto 1fr',
                     alignItems: 'center',
 
                 }}
             >
-                <div style={{ color: 'silver' }}>© 2024 new-website.dev</div>
-                <ol>
+                <div style={{ color: 'silver' }}>© 2024 therabonnies.vercel.app</div>
+                {/* <ol>
                     <li style={{ color: 'silver' }}>Follow us:</li>
                     <li><Link href={"/#"}>
                         <FacebookIcon fontSize="large" color="action" sx={{ p: "0px", color: 'blue' }} />
                     </Link></li>
                     <li><Link href={"/#"}><XIcon fontSize="medium" color="action" sx={{ p: "0px", color: 'silver' }} /></Link></li>
                     <li><Link href={"/#"}><LinkedInIcon fontSize="large" color="action" sx={{ p: "0px", color: 'silver' }} /></Link></li>
-                </ol>
+                </ol> */}
             </Nav>
         </footer>
     )

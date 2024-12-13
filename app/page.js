@@ -1,15 +1,15 @@
 'use client';
-import Image from "next/image";
-import styles from "./page.module.css";
 import DivTag from "./components/DivTag";
 import useResolution from "./components/useResolution";
 import { useEffect, useState } from "react";
 import { EmblaCarousel } from "./components/carousel/EmblaCarousel";
+import Carousel from "./components/carousel/TextCarousel/Carousel";
 import Navigation from "./components/nav/Navigation";
-import ServiceRendered from "./components/ServiceRendered";
 import Footer from "./components/nav/Footer";
 import useViewPort from "./components/customHooks/useViewPort";
 import Link from "next/link";
+import slides from "./components/slides";
+import { useRouter } from "next/navigation";
 
 export default function Home(props) {
   const [deviceHeight, setdeviceHeight] = useState(0)
@@ -18,26 +18,37 @@ export default function Home(props) {
   const mainPad = useViewPort([
     '10px', '10px', '20px', '10px 4%', '10px 10%', '10px 12%'
   ]);
+  const router = useRouter();
 
   useEffect(() => {
     setdeviceHeight(window.innerHeight);
     setdeviceWidth(window.innerWidth);
   }, [])
 
+  const OPTIONS = { loop: true }
+
+  const serviceClicked = (url) => {
+    const services = slides();
+    let service = services.find((serv) => serv.url === url)
+    router.push('/order/' + url)
+  }
+
   return (
     deviceHeight > 0 ?
       <DivTag
         height={deviceHeight + "px"}
         maxHeight={deviceHeight + "px"}
+        maxWidth={deviceWidth + "px"}
         overflow={"hidden auto"}
         color={"white"}
         bgc={'radial-gradient(ellipse at top, rgb(36 92 43 / 40%) 20%, #0a0f15 55%), url("/grid-bg.svg")'}
-        gtr={"auto 1fr auto"}
+      // gtr={"auto 1fr auto"}
       >
         <DivTag
           position={'sticky'}
           top={'0px'}
           zIndex={"100"}
+          maxWidth={deviceWidth + "px"}
         ><Navigation /></DivTag>
         <DivTag
           gtc={"repeat(auto-fit, minmax(350px, 1fr))"}
@@ -47,15 +58,17 @@ export default function Home(props) {
           padding={"0.8rem 2%"}
           height={'max-content'}
           bSizing={"border-box"}
+          maxWidth={deviceWidth + "px"}
         >
           <DivTag
-            maxWidth={"400px"}
             height={'max-content'}
             gap={"10px"}
             bSizing={"border-box"}
           >
-            <h1>Website Title or Organisation{"'"}s Name in Full Goes Here</h1>
-            <p><strong>Summary of About The Organisation:</strong> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel adipisci facilis culpa dolorum ipsum numquam doloremque eligendi ut nisi ratione quidem tempore officia minima, necessitatibus iste consequuntur consequatur? Impedit officiis nesciunt perspiciatis delectus nisi ullam maxime, minima repellat rerum culpa, aut architecto dolorum quidem nulla saepe nihil sed, omnis commodi...</p>
+            <h1>TheraBonnies (private massage therapists)</h1>
+            <p style={{ textAlign: 'justify' }}>
+              Are you feeling stressed, sore or need to relax? Discover a world of greater pleasure and unparalleled experiences with TheraBonnies, private massage therapists providing the perfect escape from the hustle and bustle of everyday life. Whether you are looking for relief from chronic pain, quiet time, or relaxation, TheraBonnies will help you feel better with optional services like Erotic/Sensual and Happy Ending.
+            </p>
 
             <button
               style={{
@@ -67,61 +80,46 @@ export default function Home(props) {
                 backgroundColor: 'rgba(36, 92, 43, 0.28)',
                 fontSize: 'large'
               }}
-            ><Link href={"/about"}>Get to know us</Link></button>
+            ><Link href={"/about"}>Get to know TheraBonnies</Link></button>
           </DivTag>
           <DivTag
             height={'max-content'}
             bSizing={"border-box"}
           >
-            {/* slider goes here  */}
             <EmblaCarousel
               files={[
-                { src: '/carousel/sam-img-1.jpg', caption: 'Farm Operation With Tractor' },
-                { src: '/carousel/sam-img-2.jpg', caption: 'Apple Fruits On The Farm.' },
-                { src: '/carousel/sam-img-3.jpg', caption: 'Cattle Grazing By The River Bank ' },
+                { src: '/carousel/massage-oil.jpeg', caption: 'Couple massage' },
+                { src: '/carousel/massage-stone.jpeg', caption: 'Apple Fruits On The Farm.' },
+                { src: '/carousel/thera-massage.jpg', caption: 'TheraBonnies ' },
+                { src: '/carousel/erotic-massage-2.webp', caption: 'TheraBonnies ' },
+                { src: '/carousel/erotic-massage.webp', caption: 'TheraBonnies ' },
               ]}
             />
           </DivTag>
         </DivTag>
-        <DivTag
-          padding={mainPad}
-          margin={"0 auto"}
-          tAlign={"justify"}
-          bgc={"#0a0f15"}
-          bSizing={"border-box"}
-        >
-          <h2>OUR VISSION: </h2>
-          <hr
-            style={{
-              borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
-              margin: '1rem 0'
-            }}
-          />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias quisquam am assumenda. Quam maxime necessitatibus commodi, aspernatur maiores magnam nobis odio earum architecto nihil atque sequi obcaecati ratione excepturi, minima ea ullam dolorum tenetur quisquam modi illum rem est! Commodi voluptatum, natus id harum veniam nesciunt quo excepturi vel assumenda. Laborum alias quia ab eius ex quas voluptatum.
-          </p>
-        </DivTag>
-        <DivTag
-          padding={mainPad}
-          margin={"0 auto"}
-          tAlign={"justify"}
-          bgc={"#0a0f15"}
-        >
-          <h2>PRODUCT & SERVICES:</h2>
-          <hr
-            style={{
-              borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
-              margin: '1rem 0'
-            }}
-          />
-          <DivTag
-            gtc={"repeat(auto-fit, minmax(300px, 1fr))"}
-            gap={"10px"}
 
-          >
-            <ServiceRendered bgi={'url("/grains.jpg")'} />
-            <ServiceRendered bgi={'url("/transportation.jpeg")'} />
-            <ServiceRendered bgi={'url("/yam.jpeg")'} />
+        <DivTag
+          padding={mainPad}
+          // margin={"0 auto"}
+          tAlign={"justify"}
+          bgc={"#0a0f15"}
+          maxWidth={deviceWidth + "px"}
+        >
+          <h2>SERVICES:</h2>
+          <hr
+            style={{
+              borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
+              margin: '1rem 0'
+            }}
+          />
+          <p style={{ marginBottom: 10, color: 'rgb(87 145 94)' }}>Let <b>TheraBonnies</b> melt away your stress with soothing techniques designed to relax both body and mind</p>
+          <DivTag>
+            {/* <ServiceRendered bgi={'url("/yam.jpeg")'} /> */}
+            <Carousel
+              slides={slides()}
+              options={OPTIONS}
+              handleClick={serviceClicked}
+            />
           </DivTag>
         </DivTag>
         <DivTag>
