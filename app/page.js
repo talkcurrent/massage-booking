@@ -14,6 +14,10 @@ import { useRouter } from "next/navigation";
 export default function Home(props) {
   const [deviceHeight, setdeviceHeight] = useState(0)
   const [deviceWidth, setdeviceWidth] = useState(0)
+  const [coupleMassage, setcoupleMassage] = useState([])
+  const [eroticMassage, seteroticMassage] = useState([])
+  const [individualMassage, setindividualMassage] = useState([])
+  const [deluxeMassage, setdeluxeMassage] = useState([])
 
   const mainPad = useViewPort([
     '10px', '10px', '20px', '10px 4%', '10px 10%', '10px 12%'
@@ -23,6 +27,17 @@ export default function Home(props) {
   useEffect(() => {
     setdeviceHeight(window.innerHeight);
     setdeviceWidth(window.innerWidth);
+
+    const services = slides();
+    let individualM = services.filter((serv) => serv.title === 'Individual Massage');
+    let eroticM = services.filter((serv) => serv.title === 'Erotic/Nuru Massage');
+    let coupleM = services.filter((serv) => serv.title === "Couple's Massage");
+    let deluxe = services.filter((serv) => serv.title === "Deluxe Massage");
+
+    setindividualMassage(individualM);
+    setcoupleMassage(coupleM);
+    seteroticMassage(eroticM)
+    setdeluxeMassage(deluxe)
   }, [])
 
   const OPTIONS = { loop: true }
@@ -105,21 +120,87 @@ export default function Home(props) {
           bgc={"#0a0f15"}
           maxWidth={deviceWidth + "px"}
         >
-          <h2>SERVICES:</h2>
+          <h2>SERVICES</h2>
+          <p style={{ color: 'rgb(87 145 94)' }}>Let <b>TheraBonnies</b> melt away your stress with soothing techniques designed to relax both body and mind</p>
           <hr
             style={{
               borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
-              margin: '1rem 0'
+              margin: '0.5rem 0 1rem 0'
             }}
           />
-          <p style={{ marginBottom: 10, color: 'rgb(87 145 94)' }}>Let <b>TheraBonnies</b> melt away your stress with soothing techniques designed to relax both body and mind</p>
-          <DivTag>
-            {/* <ServiceRendered bgi={'url("/yam.jpeg")'} /> */}
-            <Carousel
-              slides={slides()}
-              options={OPTIONS}
-              handleClick={serviceClicked}
-            />
+          <DivTag gap={"1rem"}>
+            <DivTag>
+              <DivTag
+                width={"max-content"}
+              >
+                <h3>Individual Massage:</h3>
+                <hr
+                  style={{
+                    borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
+                    margin: '0.5rem 0 1rem 0'
+                  }}
+                />
+              </DivTag>
+              <Carousel
+                slides={individualMassage}
+                options={OPTIONS}
+                handleClick={serviceClicked}
+              />
+            </DivTag>
+            <DivTag>
+              <DivTag
+                width={"max-content"}
+              >
+                <h3>Erotic/Nuru Massage:</h3>
+                <hr
+                  style={{
+                    borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
+                    margin: '0.5rem 0 1rem 0'
+                  }}
+                />
+              </DivTag>
+              <Carousel
+                slides={eroticMassage}
+                options={OPTIONS}
+                handleClick={serviceClicked}
+              />
+            </DivTag>
+            <DivTag>
+              <DivTag
+                width={"max-content"}
+              >
+                <h3>Deluxe Massage:</h3>
+                <hr
+                  style={{
+                    borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
+                    margin: '0.5rem 0 1rem 0'
+                  }}
+                />
+              </DivTag>
+              <Carousel
+                slides={deluxeMassage}
+                options={OPTIONS}
+                handleClick={serviceClicked}
+              />
+            </DivTag>
+            <DivTag>
+              <DivTag
+                width={"max-content"}
+              >
+                <h3>{"Couple's Massage"}</h3>
+                <hr
+                  style={{
+                    borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
+                    margin: '0.5rem 0 1rem 0'
+                  }}
+                />
+              </DivTag>
+              <Carousel
+                slides={coupleMassage}
+                options={OPTIONS}
+                handleClick={serviceClicked}
+              />
+            </DivTag>
           </DivTag>
         </DivTag>
         <DivTag>

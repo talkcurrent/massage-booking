@@ -154,7 +154,7 @@ button:hover {
   grid-template-columns: auto 1fr;
   justify-content: space-between;
   gap: 1.2rem;
-  margin-top: 1.8rem;
+  margin-top: 1rem;
 }
 
 .embla__text__buttons {
@@ -177,8 +177,8 @@ button:hover {
   padding: 0;
   margin: 0;
   box-shadow: inset 0 0 0 0.2rem #1e1e1e;
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 40px;
+  height: 40px;
   z-index: 1;
   border-radius: 50%;
   color: var(--text-body);
@@ -192,8 +192,8 @@ button:hover {
 }
 
 .embla__text__button__svg {
-  width: 35%;
-  height: 35%;
+  width: 18px;
+  height: 18px;
 }
 
 .embla__text__play {

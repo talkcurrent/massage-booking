@@ -80,10 +80,10 @@ const EmblaCarousel = (props) => {
                                 padding={"15px 20px 2px 20px"}
                                 bShadow={"inset 0 0 0 0.2rem #1e1e1e"}
                                 gtr={"1fr auto"}
-                                height={"200px"}
+                                height={"150px"}
                             >
                                 <DivTag>
-                                    <h3 style={{ marginBottom: 10 }}>{slide.title}</h3>
+                                    {/* <h3 style={{ marginBottom: 10 }}>{slide.title}</h3> */}
                                     <p style={{ color: '#b4b4b4', textAlign: 'left' }}>{slide.body && Truncate(slide.body, 30)}</p>
                                     <p style={{ fontFamily: 'monospace', color: '#b4b4b4', fontSize: 'large' }}><b>{slide.duration}</b></p>
                                 </DivTag>

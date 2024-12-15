@@ -34,7 +34,58 @@ export default function slides() {
             }
         },
         {
-            title: 'Erotic Massage',
+            title: 'Deluxe Massage',
+            body: 'Swedish, Deep Tissue, Hot Stone Therapy, Aromatherapy, and Reflexology (All-Round Massage)',
+            duration: '2hrs - $450',
+            cost: 500,
+            url: "luxurious_hrs_swedish_deep_tissue_hot_stone_aromatherapy_and_reflexology_massage",
+            description: {
+                detail: "Unwind, recharge, and pamper yourself with our exclusive Deluxe Massage. Designed for those who seek the ultimate in relaxation and rejuvenation, this luxurious treatment combines the best of massage therapy, premium products, and serene ambiance for a truly indulgent experience.",
+                offers: [
+                    "Extended Duration: Instead of the usual 60-minute or 90-minute massage, our deluxe massage can last 120 minutes or longer, allowing for more thorough work on the body.",
+                    "Variety of Techniques: We combine multiple modalities such as Swedish, deep tissue, hot stone therapy, aromatherapy, or lymphatic drainage for a well-rounded experience.",
+                    "Premium Products: The use of high-quality oils, lotions, or essential oils, sometimes infused with aromatic scents for added relaxation benefits.",
+                    "Hot Stones or Heat Therapy: The use of heated stones or wraps to help soothe muscles and improve circulation.",
+                    "Aromatherapy: We use essential oils or soothing scents to further promote relaxation, reduce stress, and create a calming atmosphere.",
+                ]
+            }
+        },
+        {
+            title: 'Deluxe Massage',
+            body: 'Swedish, Deep Tissue, Hot Stone Therapy, Aromatherapy, and Reflexology (All-Round Massage)',
+            duration: '2hr 30mins - $600',
+            cost: 600,
+            url: "luxurious_2_30mins_swedish_deep_tissue_hot_stone_aromatherapy_and_reflexology_massage",
+            description: {
+                detail: "Unwind, recharge, and pamper yourself with our exclusive Deluxe Massage. Designed for those who seek the ultimate in relaxation and rejuvenation, this luxurious treatment combines the best of massage therapy, premium products, and serene ambiance for a truly indulgent experience.",
+                offers: [
+                    "Extended Duration: Instead of the usual 60-minute or 90-minute massage, our deluxe massage can last 120 minutes or longer, allowing for more thorough work on the body.",
+                    "Variety of Techniques: We combine multiple modalities such as Swedish, deep tissue, hot stone therapy, aromatherapy, or lymphatic drainage for a well-rounded experience.",
+                    "Premium Products: The use of high-quality oils, lotions, or essential oils, sometimes infused with aromatic scents for added relaxation benefits.",
+                    "Hot Stones or Heat Therapy: The use of heated stones or wraps to help soothe muscles and improve circulation.",
+                    "Aromatherapy: We use essential oils or soothing scents to further promote relaxation, reduce stress, and create a calming atmosphere.",
+                ]
+            }
+        },
+        {
+            title: 'Deluxe Massage',
+            body: 'Swedish, Deep Tissue, Hot Stone Therapy, Aromatherapy, and Reflexology (All-Round Massage)',
+            duration: '3hrs - $750',
+            cost: 750,
+            url: "luxurious_3hrs_swedish_deep_tissue_hot_stone_aromatherapy_and_reflexology_massage",
+            description: {
+                detail: "Unwind, recharge, and pamper yourself with our exclusive Deluxe Massage. Designed for those who seek the ultimate in relaxation and rejuvenation, this luxurious treatment combines the best of massage therapy, premium products, and serene ambiance for a truly indulgent experience.",
+                offers: [
+                    "Extended Duration: Instead of the usual 60-minute or 90-minute massage, our deluxe massage can last 120 minutes or longer, allowing for more thorough work on the body.",
+                    "Variety of Techniques: We combine multiple modalities such as Swedish, deep tissue, hot stone therapy, aromatherapy, or lymphatic drainage for a well-rounded experience.",
+                    "Premium Products: The use of high-quality oils, lotions, or essential oils, sometimes infused with aromatic scents for added relaxation benefits.",
+                    "Hot Stones or Heat Therapy: The use of heated stones or wraps to help soothe muscles and improve circulation.",
+                    "Aromatherapy: We use essential oils or soothing scents to further promote relaxation, reduce stress, and create a calming atmosphere.",
+                ]
+            }
+        },
+        {
+            title: 'Erotic/Nuru Massage',
             body: 'Head, Neck, Shoulder, Back, Hands Therapy, Hot Stone Massage or Foot Treatment',
             duration: '2hrs 50mins - $500',
             cost: 500,
@@ -50,7 +101,7 @@ export default function slides() {
             }
         },
         {
-            title: 'Erotic Massage',
+            title: 'Erotic/Nuru Massage',
             body: 'Deep Tissue Massage, Reflexology (Foot and Hand) Massage, Hot Stone Massage or Shiatsu Massage ',
             duration: '2hrs 50mins - $600',
             cost: 600,
@@ -66,7 +117,7 @@ export default function slides() {
             }
         },
         {
-            title: 'Erotic Massage',
+            title: 'Erotic/Nuru Massage',
             body: 'Deep Tissue Massage, Reflexology, Hot Stone Massage or Shiatsu Massage with happy ending',
             duration: '2hrs  ($800 - $1000)',
             cost: 800,
@@ -82,9 +133,9 @@ export default function slides() {
             }
         },
         {
-            title: 'Erotic Massage',
+            title: 'Erotic/Nuru Massage',
             body: "Deep Tissue Massage, Reflexology, Hot Stone Massage or Shiatsu Massage with happy ending",
-            duration: <>3hrs - $1500 <br />(2 masseuses)</>,
+            duration: <small>3hrs - $1500 (2 masseuses)</small>,
             cost: 1500,
             url: "deep_tissue_massage_reflexology_massage_hot_stone_massage_or_shiatsu_massage_with_happy_ending_2_masseuses",
             description: {
