@@ -133,7 +133,7 @@ export default function Home(props) {
               <DivTag
                 width={"max-content"}
               >
-                <h3>Individual Massage:</h3>
+                <h3 style={{ color: '#57915e' }}>Individual Massage:</h3>
                 <hr
                   style={{
                     borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
@@ -151,7 +151,7 @@ export default function Home(props) {
               <DivTag
                 width={"max-content"}
               >
-                <h3>Erotic/Nuru Massage:</h3>
+                <h3 style={{ color: '#57915e' }}>Erotic/Nuru Massage:</h3>
                 <hr
                   style={{
                     borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
@@ -169,7 +169,7 @@ export default function Home(props) {
               <DivTag
                 width={"max-content"}
               >
-                <h3>Deluxe Massage:</h3>
+                <h3 style={{ color: '#57915e' }}>Deluxe Massage:</h3>
                 <hr
                   style={{
                     borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
@@ -187,7 +187,7 @@ export default function Home(props) {
               <DivTag
                 width={"max-content"}
               >
-                <h3>{"Couple's Massage"}</h3>
+                <h3 style={{ color: '#57915e' }}>{"Couple's Massage"}</h3>
                 <hr
                   style={{
                     borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',

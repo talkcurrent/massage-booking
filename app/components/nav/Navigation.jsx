@@ -18,6 +18,8 @@ const Navigation = ({ onLayout }) => {
   useEffect(() => {
     router.prefetch(`/`);
     router.prefetch(`/about`);
+    router.prefetch(`/services`);
+    router.prefetch(`/contact`);
     setdomready(true)
     if (domready) {
       handleLayout();
@@ -63,13 +65,13 @@ const Navigation = ({ onLayout }) => {
             className={``}
           >Services</Link>
         </li>
-        {/* <li
+        <li
           className={path.split("/").includes('contact') ? 'active' : ''}
         >
           <Link href={"/contact"}
             className={``}
           >Contact</Link>
-        </li> */}
+        </li>
         <li className={path.split("/").includes('about') ? 'active' : ''}
         >
           <Link href={"/about"}

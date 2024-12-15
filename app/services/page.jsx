@@ -94,7 +94,7 @@ const Page = () => {
                                     >
                                         <AnimateBtn
                                             btnText={"Book Now"}
-                                            bgc={'rgba(36, 92, 43, 0.28)'}
+                                            bgc={'#417e38'}
                                             buttonStyle={{ padding: "5px 10px" }}
                                             justify={"center"}
                                             animateColor={"white"}

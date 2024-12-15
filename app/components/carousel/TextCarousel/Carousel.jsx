@@ -84,7 +84,7 @@ const EmblaCarousel = (props) => {
                             >
                                 <DivTag>
                                     {/* <h3 style={{ marginBottom: 10 }}>{slide.title}</h3> */}
-                                    <p style={{ color: '#b4b4b4', textAlign: 'left' }}>{slide.body && Truncate(slide.body, 30)}</p>
+                                    <p style={{ color: 'white', textAlign: 'left' }}>{slide.body && Truncate(slide.body, 30)}</p>
                                     <p style={{ fontFamily: 'monospace', color: '#b4b4b4', fontSize: 'large' }}><b>{slide.duration}</b></p>
                                 </DivTag>
                                 <DivTag
@@ -92,7 +92,7 @@ const EmblaCarousel = (props) => {
                                 >
                                     <AnimateBtn
                                         btnText={"Book Now"}
-                                        bgc={'rgba(36, 92, 43, 0.28)'}
+                                        bgc={'#417e38'}
                                         buttonStyle={{ padding: "5px 10px" }}
                                         justify={"center"}
                                         animateColor={"white"}

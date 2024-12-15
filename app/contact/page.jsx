@@ -63,7 +63,19 @@ const Page = () => {
                     >
                         <h1 style={{ color: '#417e38' }}>OUR CONTACTS:</h1>
 
-                        <p style={{ marginTop: '1rem', textAlign: 'justify' }}>Blank!</p>
+                        <p style={{ margin: '1rem 0' }}>TheraBonnies operate in two countries only: </p>
+                        <DivTag gap={"2rem"}>
+                            <DivTag>
+                                <h3>USA:</h3>
+                                <p style={{ fontSize: 'large' }}>+1 828 471 7609</p>
+                                <p><b>Email:</b> bonnievasilios@gmail.com</p>
+                            </DivTag>
+                            <DivTag>
+                                <h3>Australia:</h3>
+                                <p style={{ fontSize: 'large' }}>+61 489 942 698</p>
+                                <p><b>Email:</b> bonnievasilios@gmail.com</p>
+                            </DivTag>
+                        </DivTag>
                     </DivTag>
                 </main>
             </DivTag>
