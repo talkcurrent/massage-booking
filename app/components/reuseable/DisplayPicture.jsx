@@ -20,59 +20,59 @@ const DisplayPicture = (props) => {
     });
     return (
         <DPStyle >
-            { userObjLoaded ?
+            {userObjLoaded ?
                 imgTemplate.size && previewable == "diplayImg" ?
                     <img
-                        src={ images[0] }
-                        alt={ `Unknown image` }
+                        src={images[0]}
+                        alt={`Unknown image`}
                         className="pre"
                     />
                     : userObj.dp ?
                         <ImageEle
-                            src={ userObj.dp.name }
-                            height={ dpRect + "px" }
-                            width={ dpRect + "px" }
-                            bRadius={ "50%" }
-                            alt={ userObj.title }
-                            objFit={ "cover" }
-                            imgClick={ imgClick }
+                            src={userObj.dp.name}
+                            height={dpRect + "px"}
+                            width={dpRect + "px"}
+                            bRadius={"50%"}
+                            alt={userObj.title}
+                            objFit={"cover"}
+                            imgClick={imgClick}
                         />
                         :
                         <TempDP
-                            height={ dpRect + "px" }
-                            width={ dpRect + "px" }
-                            fSize={ `${dpRect / 2}px` }
+                            height={dpRect + "px"}
+                            width={dpRect + "px"}
+                            fSize={`${dpRect / 2}px`}
                             // pad={ "3px" }
-                            dpName={ userObj.name }
+                            dpName={userObj.name}
                         />
-                : "" }
+                : ""}
 
             <div className="profile-upload-btn">
-                { imgTemplate.size && previewable == "diplayImg" ?
+                {imgTemplate.size && previewable == "diplayImg" ?
                     <ActionBtn
-                        btnText={ "Update" }
-                        bgc={ "#296dad" }
-                        color={ "whitesmoke" }
-                        btnClick={ () => uploadDp() }
+                        btnText={"Update"}
+                        bgc={"#296dad"}
+                        color={"whitesmoke"}
+                        btnClick={() => uploadDp()}
                     />
                     :
                     <>
                         <label
                             htmlFor="dp_input_file"
-                            style={ { margin: 0 } }
-                            className={ `n-btn` }
+                            style={{ margin: 0 }}
+                            className={`n-btn`}
                             title="Upload your face"
                         >
                             <i className="fas fa-camera"></i>
                         </label>
                         <input
                             type="file" name=""
-                            ref={ dpInputFile }
+                            ref={dpInputFile}
                             id="dp_input_file"
-                            style={ { display: "none" } }
-                            onChange={ event => {
+                            style={{ display: "none" }}
+                            onChange={event => {
                                 handleFile(event, "diplayImg", 1);
-                            } }
+                            }}
                         />
                     </>
                 }
@@ -80,12 +80,12 @@ const DisplayPicture = (props) => {
             {
                 uploading ?
                     (<Loading
-                        fixed={ false }
-                        loaderPos={ `35%` }
-                        borderRadius={ `6px / 12px` }
-                        transformOrigin={ `3px  16px` }
-                        width={ `3px` }
-                        height={ `10px` }
+                        fixed={false}
+                        loaderPos={`35%`}
+                        borderRadius={`6px / 12px`}
+                        transformOrigin={`3px  16px`}
+                        width={`3px`}
+                        height={`10px`}
                     />)
                     : ("")
             }

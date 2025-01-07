@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import slides from '@/app/components/slides'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation';
 import Navigation from '@/app/components/nav/Navigation';
 import DivTag from '@/app/components/DivTag';
@@ -12,16 +12,16 @@ import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import EmailIcon from "@mui/icons-material/Email";
 import HomeIcon from '@mui/icons-material/Home';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import AnimateBtn from '@/app/components/reuseable/AnimateBtn';
 import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
+import Translate from '@/app/components/Translate';
+import { CommonContext } from '@/app/components/context/CommonContext';
 
 
 const Page = () => {
+    const { deviceHeight, deviceWidth, language } = useContext(CommonContext);
     const services = slides();
     const [service, setservice] = useState({})
-    const [navHeight, setnavHeight] = useState(0)
-    const [deviceWidth, setdeviceWidth] = useState(0)
-    const [deviceHeight, setdeviceHeight] = useState(0)
+    const [navHeight, setnavHeight] = useState(0);
     const [form, setform] = useState({
         fullName: '', phoneNumber: '', email: '', address: '', date: ''
     });
@@ -46,11 +46,9 @@ const Page = () => {
     const router = useRouter();
 
     useEffect(() => {
-        setdeviceHeight(window.innerHeight);
-        setdeviceWidth(window.innerWidth);
-        router.prefetch(`/`);
-        router.prefetch(`/contact`);
-        router.prefetch(`/vission`);
+        // router.prefetch(`/`);
+        // router.prefetch(`/contact`);
+        // router.prefetch(`/vission`);
     }, [])
 
     const config = {
@@ -73,7 +71,7 @@ const Page = () => {
 
     const fwConfig = {
         ...config,
-        text: 'Proceed to checkout',
+        text: Translate('Proceed to checkout', language),
         callback: async (response) => {
             setProcessingReport(true)
             let res = await updateReport(phone)
@@ -82,7 +80,6 @@ const Page = () => {
                 router.push(path);
                 setProcessingReport(false)
             }
-            console.log(response);
             closePaymentModal() // this will close the modal programmatically
         },
         onClose: () => { },
@@ -124,9 +121,9 @@ const Page = () => {
                         // padding={'0 15px'}
                         bSizing={'border-box'}
                     >
-                        <h1 style={{ color: '#417e38', margin: '0.67em 0' }}>{service.hasOwnProperty('title') ? service.title : ""}</h1>
-                        <h3 style={{ color: '#b4b4b4', margin: '0.67em 0' }}>{service.hasOwnProperty('title') ? <>{service.body} {service.duration}</> : ""} </h3>
-                        {service.hasOwnProperty('title') ?
+                        <h1 style={{ color: '#417e38', margin: '0.67em 0' }}>{service.hasOwnProperty('title') ? Translate(service.title, language) : ""}</h1>
+                        <h3 style={{ color: '#b4b4b4', margin: '0.67em 0' }}>{service.hasOwnProperty('title') ? <>{Translate(service.body, language)} {Translate(service.duration, language)}</> : ""} </h3>
+                        {/* {service.hasOwnProperty('title') ?
                             <p>{service.description.detail}</p>
                             : ""}
                         <h3 style={{ margin: '1rem 0' }}>What We Offer:</h3>
@@ -136,8 +133,8 @@ const Page = () => {
                                     return <li key={index}>{offer}</li>
                                 })
                                 : ""}
-                        </ul>
-                        <h2 style={{ color: '#417e38', margin: '0.67em 0' }}>Appointment Form:</h2>
+                        </ul> */}
+                        <h2 style={{ color: '#417e38', margin: '0.67em 0' }}>{Translate("Appointment Form", language)}:</h2>
                         <DivTag
                             gap={"10px"}
                             margin={'0 auto'}
@@ -151,7 +148,7 @@ const Page = () => {
                         >
                             <InputText
                                 tabIndex={"1"}
-                                label={"Full Name"}
+                                label={Translate("Full Name", language)}
                                 inputType={"text"}
                                 autoComplete={"false"}
                                 padding={0}
@@ -171,7 +168,7 @@ const Page = () => {
                             />
                             <InputText
                                 tabIndex={"2"}
-                                label={"Phone Number"}
+                                label={Translate("Phone Number", language)}
                                 inputType={"text"}
                                 autoComplete={"false"}
                                 padding={0}
@@ -181,7 +178,7 @@ const Page = () => {
                                 error={error.phoneNumber}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
-                                placeholder={"E.g (555) 555-1234"}
+                                placeholder={"(555) 555-1234..."}
                                 inputColor={"black"}
                                 onChange={(e) => {
                                     setform({ ...form, ['phoneNumber']: e.target.value });
@@ -191,7 +188,7 @@ const Page = () => {
                             />
                             <InputText
                                 tabIndex={"3"}
-                                label={"E-mail"}
+                                label={Translate("email", language)}
                                 inputType={"email"}
                                 autoComplete={"false"}
                                 padding={0}
@@ -200,7 +197,7 @@ const Page = () => {
                                 value={form.email}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
-                                placeholder={"E.g example@gmail.com..."}
+                                placeholder={"example@gmail.com..."}
                                 inputColor={"black"}
                                 iconLeft={<EmailIcon fontSize="large" color="action" sx={{ padding: "0px" }} />}
                                 onChange={(e) => {
@@ -210,7 +207,7 @@ const Page = () => {
                             />
                             <InputText
                                 tabIndex={"4"}
-                                label={"Address"}
+                                label={Translate("Address", language)}
                                 inputType={"text"}
                                 autoComplete={"false"}
                                 padding={0}
@@ -230,7 +227,7 @@ const Page = () => {
                             />
                             <InputText
                                 tabIndex={"4"}
-                                label={"Pick a date"}
+                                label={Translate("appointment day", language)}
                                 staticLabel={true}
                                 inputType={"date"}
                                 autoComplete={"false"}

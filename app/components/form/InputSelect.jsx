@@ -44,7 +44,9 @@ const InputSelect = (props) => {
                     gtc={iconLeft && iconRight ? "38px 1fr 38px" : iconLeft ? `38px 1fr` : iconRight ? `1fr 38px` : `1fr`}
                     gap={"2px"}
                 >
-                    {iconLeft ? <DivTag align="center">{iconLeft}</DivTag> : ""}
+                    <label htmlFor={name} style={{ alignSelf: "end" }}>
+                        {iconLeft ? <DivTag align="center">{iconLeft}</DivTag> : ""}
+                    </label>
                     <DivTag>
                         <DivTag
                             onLayout={onLayout}
@@ -60,7 +62,7 @@ const InputSelect = (props) => {
                             name={name}
                             $width={"100%"}
                             onChange={onChange}
-                            id={id}
+                            id={name}
                             value={value}
                             style={{ padding }}
                         >

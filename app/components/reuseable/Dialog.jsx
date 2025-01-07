@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import Close from './Close';
 
 function Dialog(props) {
 
@@ -20,10 +21,18 @@ function Dialog(props) {
 
     return (
         <DialogStyle
-            $overflow={props.overflow}
-            $align={props.align}
-            $top={props.top}
+            overflow={props.overflow}
+            align={props.align}
+            top={props.top}
         >
+            {props.handleClose ?
+                <Close
+                    absolute={true}
+                    top={"0px"} right={"0px"}
+                    bottom={""} left={""}
+                    handleClick={props.handleClose}
+                />
+                : ""}
             {props.children}
         </DialogStyle>
     );
@@ -32,16 +41,16 @@ function Dialog(props) {
 export default Dialog;
 const DialogStyle = styled.div`
     position: fixed;
-    top: ${props => props.$top ? props.$top : "0px"};
+    top: ${props => props.top ? props.top : "0px"};
     left: 0px;
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
+    z-index: 35;
     display: grid;
     justify-items: center;
-    align-items: ${props => props.$align ? props.$align : "center"};
-    overflow: ${props => props.$overflow ? props.$overflow : "auto"};
+    align-items: ${props => props.align ? props.align : "center"};
+    overflow: ${props => props.overflow ? props.overflow : "auto"};
     -webkit-animation-name: dialog;
     animation-name: dialog;
     animation-duration: 0.6s;

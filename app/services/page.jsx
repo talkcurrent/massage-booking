@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navigation from '../components/nav/Navigation'
 import DivTag from '../components/DivTag';
 import Footer from '../components/nav/Footer';
@@ -8,12 +8,12 @@ import { useRouter } from 'next/navigation';
 import Truncate from '../components/reuseable/Truncate';
 import slides from '../components/slides';
 import AnimateBtn from '../components/reuseable/AnimateBtn';
+import Translate from '../components/Translate';
+import { CommonContext } from '../components/context/CommonContext';
 
 const Page = () => {
-
-    const [navHeight, setnavHeight] = useState(0)
-    const [deviceWidth, setdeviceWidth] = useState(0)
-    const [deviceHeight, setdeviceHeight] = useState(0)
+    const { deviceHeight, deviceWidth, language } = useContext(CommonContext);
+    const [navHeight, setnavHeight] = useState(0);
     const articlePad = useViewPort([
         '10px', '10px', '20px', '10px 10%', '10px 20%', '10px 30%'
     ]);
@@ -21,11 +21,9 @@ const Page = () => {
     const router = useRouter();
 
     useEffect(() => {
-        setdeviceHeight(window.innerHeight);
-        setdeviceWidth(window.innerWidth);
-        router.prefetch(`/`);
-        router.prefetch(`/contact`);
-        router.prefetch(`/vission`);
+        // router.prefetch(`/`);
+        // router.prefetch(`/contact`);
+        // router.prefetch(`/vission`);
     }, [])
 
     const getLayout = (rect) => {
@@ -70,7 +68,7 @@ const Page = () => {
                         // padding={'0 15px'}
                         bSizing={'border-box'}
                     >
-                        <h2 style={{ color: '#417e38' }}>TheraBonnies Services</h2>
+                        <h2 style={{ color: '#417e38' }}>{Translate('therabonnies services', language)}</h2>
                         <DivTag
                             margin={'2rem 0 0 0'}
                             gap={'10px'}
@@ -85,15 +83,15 @@ const Page = () => {
                                     height={"200px"}
                                 >
                                     <DivTag>
-                                        <h3 style={{ marginBottom: 10 }}>{service.title}</h3>
-                                        <p style={{ color: '#b4b4b4', textAlign: 'left' }}>{service.body && Truncate(service.body, 30)}</p>
-                                        <p style={{ fontFamily: 'monospace', color: '#b4b4b4', fontSize: 'large' }}><b>{service.duration}</b></p>
+                                        <h3 style={{ marginBottom: 10 }}>{Translate(service.title, language)}</h3>
+                                        <p style={{ color: '#b4b4b4', textAlign: 'left' }}>{service.body && Truncate(Translate(service.body, language), 30)}</p>
+                                        <p style={{ fontFamily: 'monospace', color: '#b4b4b4', fontSize: 'large' }}><b>{Translate(service.duration, language)}</b></p>
                                     </DivTag>
                                     <DivTag
                                         justifySelf={"end"}
                                     >
                                         <AnimateBtn
-                                            btnText={"Book Now"}
+                                            btnText={Translate("Book Now", language)}
                                             bgc={'#417e38'}
                                             buttonStyle={{ padding: "5px 10px" }}
                                             justify={"center"}

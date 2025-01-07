@@ -7,12 +7,10 @@ import {
     usePrevNextButtons
 } from './ArrowButtons'
 import DivTag from '../../DivTag'
-import Truncate from '../../reuseable/Truncate'
-import AnimateBtn from '../../reuseable/AnimateBtn'
-import Translate from '../../Translate'
+import DP from '../../reuseable/DP'
 
-const EmblaCarousel = (props) => {
-    const { slides, options, handleClick, language } = props
+const ReviewCarousel = (props) => {
+    const { slides, options, handleClick } = props
     const [emblaRef, emblaApi] = useEmblaCarousel(options, [
         AutoScroll({ playOnInit: false })
     ])
@@ -71,39 +69,51 @@ const EmblaCarousel = (props) => {
     }, [emblaApi])
 
     return (
-        <DivTag class="embla__text">
+        <DivTag class="embla__text__2">
             <div className="embla__text__viewport" ref={emblaRef}>
                 <div className="embla__text__container">
                     {slides.map((slide, index) => {
                         return (
-                            <div className="embla__text__slide" key={index}>
+                            <div
+                                className="embla__text__slide"
+                                key={index}
+                            >
                                 <DivTag
-                                    bRadius={"1.8rem"}
-                                    padding={"15px 20px 2px 20px"}
-                                    bShadow={"inset 0 0 0 0.2rem #1e1e1e"}
+                                    bRadius={"1.8rem 1.8rem 0rem 1.8rem"}
+                                    padding={"10px 10px 2px 10px"}
+                                    bShadow={"inset 0 0 0 1.5px #1e1e1e"}
                                     gtr={"1fr auto"}
-                                    height={"150px"}
+                                    height={"210px"}
                                 >
-                                    <DivTag>
-                                        {/* <h3 style={{ marginBottom: 10 }}>{slide.title}</h3> */}
-                                        <p style={{ color: 'white', textAlign: 'left' }}>{slide.body && Truncate(Translate(slide.body, language), 30)}</p>
-                                        <p style={{ fontFamily: 'monospace', color: '#b4b4b4', fontSize: 'large' }}>
-                                            <b>{Translate(slide.duration, language)}</b>
-                                        </p>
-                                    </DivTag>
-                                    <DivTag
-                                        justifySelf={"end"}
-                                    >
-                                        <AnimateBtn
-                                            btnText={Translate("Book Now", language)}
-                                            bgc={'#417e38'}
-                                            buttonStyle={{ padding: "5px 10px" }}
-                                            justify={"center"}
-                                            animateColor={"white"}
-                                            animateBgColor={"green"}
-                                            color={"white"}
-                                            handleClick={() => handleClick(slide.url)}
+                                    <DivTag gtr={"auto auto 1fr auto"}>
+                                        <DivTag
+                                            gtc={"auto 1fr"}
+                                            gap={"10px"}
+                                        >
+                                            <DP obj={slide} dpRect={50} />
+                                            <DivTag>
+                                                <DivTag color={'#417e38'}>{slide.poster}</DivTag>
+                                                <DivTag color={'silver'}><i>{slide.location}</i></DivTag>
+                                            </DivTag>
+                                        </DivTag>
+                                        <hr
+                                            style={{
+                                                borderImage: 'linear-gradient(to right, rgb(36 92 43 / 40%) 20%, rgb(24 26 30 / 80%) 55%) 1',
+                                                margin: '2px 0 4px 0'
+                                            }}
                                         />
+                                        <DivTag
+                                            tAlign={'left'}
+                                        >
+                                            <span>{slide.body}</span>
+                                        </DivTag>
+                                        <DivTag
+                                            justify={"end"}
+                                            color={"silver"}
+                                            fFamily={"serif"}
+                                        >
+                                            <i><span>{new Date(slide.date).toDateString()}</span></i>
+                                        </DivTag>
                                     </DivTag>
                                 </DivTag>
                             </div>
@@ -133,4 +143,4 @@ const EmblaCarousel = (props) => {
     )
 }
 
-export default EmblaCarousel
+export default ReviewCarousel;

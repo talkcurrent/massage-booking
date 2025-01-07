@@ -1,4 +1,5 @@
 import React from 'react'
+import Translate from './Translate';
 
 export default function slides() {
 
@@ -53,7 +54,7 @@ export default function slides() {
         {
             title: 'Deluxe Massage',
             body: 'Swedish, Deep Tissue, Hot Stone Therapy, Aromatherapy, and Reflexology (All-Round Massage)',
-            duration: '2hr 30mins - $600',
+            duration: '2hr, 30mins - $600',
             cost: 600,
             url: "luxurious_2_30mins_swedish_deep_tissue_hot_stone_aromatherapy_and_reflexology_massage",
             description: {
@@ -87,7 +88,7 @@ export default function slides() {
         {
             title: 'Erotic/Nuru Massage',
             body: 'Head, Neck, Shoulder, Back, Hands Therapy, Hot Stone Massage or Foot Treatment',
-            duration: '2hrs 50mins - $500',
+            duration: '2hrs, 50mins - $500',
             cost: 500,
             url: "head_neck_shoulder_back_hands_therapy_hot_stone_massage_or_foot_treatment",
             description: {
@@ -102,8 +103,8 @@ export default function slides() {
         },
         {
             title: 'Erotic/Nuru Massage',
-            body: 'Deep Tissue Massage, Reflexology (Foot and Hand) Massage, Hot Stone Massage or Shiatsu Massage ',
-            duration: '2hrs 50mins - $600',
+            body: 'Deep Tissue Massage, Reflexology (Foot and Hand) Massage, Hot Stone Massage or Shiatsu Massage',
+            duration: '2hrs, 50mins - $600',
             cost: 600,
             url: "deep_tissue_massage_reflexology_massage_hot_stone_massage_or_shiatsu_massage",
             description: {
@@ -119,7 +120,7 @@ export default function slides() {
         {
             title: 'Erotic/Nuru Massage',
             body: 'Deep Tissue Massage, Reflexology, Hot Stone Massage or Shiatsu Massage with happy ending',
-            duration: '2hrs  ($800 - $1000)',
+            duration: '2hrs ($800 - $1000)',
             cost: 800,
             url: "deep_tissue_massage_reflexology_massage_hot_stone_massage_or_shiatsu_massage_with_happy_ending",
             description: {
@@ -135,7 +136,7 @@ export default function slides() {
         {
             title: 'Erotic/Nuru Massage',
             body: "Deep Tissue Massage, Reflexology, Hot Stone Massage or Shiatsu Massage with happy ending",
-            duration: <small>3hrs - $1500 (2 masseuses)</small>,
+            duration: '3hrs - $1500 (2 masseuses)',
             cost: 1500,
             url: "deep_tissue_massage_reflexology_massage_hot_stone_massage_or_shiatsu_massage_with_happy_ending_2_masseuses",
             description: {
@@ -179,7 +180,7 @@ export default function slides() {
                     "Option to include add-ons like hot stones, scalp massages, or essential oil enhancements.",
                 ]
             }
-        },
+        }
     ]
     return theraSlides;
 }

@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components';
 import Link from "next/link";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import XIcon from '@mui/icons-material/X';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { CommonContext } from '../context/CommonContext';
 
 const Footer = () => {
-
-    const [deviceWidth, setdeviceWidth] = useState(0)
-
-    useEffect(() => {
-        setdeviceWidth(window.innerWidth);
-    }, [])
+    const { deviceHeight, deviceWidth } = useContext(CommonContext);
 
     return (
         <footer

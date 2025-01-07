@@ -106,6 +106,14 @@ button:hover {
   --slide-size: 300px;
 }
 
+.embla__text__2 {
+  /* max-width: 100%; */
+  /* margin: auto; */
+  --slide-height: 19rem;
+  --slide-spacing: 1rem;
+  --slide-size: 310px;
+}
+
 /* @media (min-width:320px) {
 
   .embla__text {
@@ -162,6 +170,14 @@ button:hover {
   grid-template-columns: repeat(2, 1fr);
   gap: 0.6rem;
   align-items: center;
+}
+
+.embla__text__button--prev {
+  justify-self: start !important;
+}
+
+.embla__text__button--next {
+  justify-self: end !important;
 }
 
 .embla__text__button {
@@ -244,7 +260,7 @@ button:hover {
 }
 
 .embla__text__controls {
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr;
 }
 
 .embla__text__progress {

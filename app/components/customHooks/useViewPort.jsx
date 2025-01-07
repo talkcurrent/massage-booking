@@ -1,35 +1,25 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { CommonContext } from "../context/CommonContext";
 
 const useViewPort = (pixels) => {
-    const [windowWidth, setwindowWidth] = useState(0);
+    const { deviceHeight, deviceWidth } = useContext(CommonContext);
 
-    useEffect(() => {
-        setwindowWidth(window.innerWidth);
-        window.addEventListener("resize", updateDimensions);
-        return () => {
-            window.removeEventListener("resize", updateDimensions);
-        };
-    }, []);
 
-    const updateDimensions = () => {
-        setwindowWidth(window.innerWidth);
-    };
-
-    if (windowWidth <= 400) {
+    if (deviceWidth <= 400) {
         return pixels[0];
     }
-    if (pixels[1] && windowWidth <= 500) {
+    if (pixels[1] && deviceWidth <= 500) {
         return pixels[1];
     }
-    if (pixels[2] && windowWidth <= 768) {
+    if (pixels[2] && deviceWidth <= 768) {
         return pixels[2];
     }
-    if (pixels[3] && windowWidth <= 900) {
+    if (pixels[3] && deviceWidth <= 900) {
         return pixels[3];
     }
-    if (pixels[4] && windowWidth <= 1280) {
+    if (pixels[4] && deviceWidth <= 1280) {
         return pixels[4];
     }
     if (pixels[5]) {

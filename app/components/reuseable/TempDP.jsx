@@ -20,16 +20,16 @@ const TempDP = (props) => {
 
     return (
         <TempDPStyle
-            width={ width }
-            height={ height }
-            pad={ pad }
-            bgc={ bgc }
-            fSize={ fSize }
-            border={ border }
-            cursor={ props.cursor }
+            width={width}
+            height={height}
+            pad={pad}
+            bgc={bgc}
+            fsize={fSize}
+            border={border}
+            cursor={props.cursor}
         >
-            <span>{ acronym }</span>
-            { props.children }
+            <span>{acronym}</span>
+            {props.children}
         </TempDPStyle>
     );
 };
@@ -42,7 +42,7 @@ const TempDPStyle = styled.div`
     background: ${props => props.bgc};
     width: ${props => props.width};
     height: ${props => props.height};
-    font-size: ${props => props.fSize};
+    font-size: ${props => props.fsize};
     padding: ${props => props.pad};
     border: ${props => props.border};
     border-radius: 50%;

@@ -1,19 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react'
+'use client'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components';
-import useResolution from '../customHooks/useResolution';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import Translate from '../Translate';
+import InputSelect from '../form/InputSelect';
+import Image from 'next/image';
+import { CommonContext } from '../context/CommonContext';
 
 const Navigation = ({ onLayout }) => {
-  const [domready, setdomready] = useState(false)
+  const { deviceHeight, deviceWidth, language, setlanguage } = useContext(CommonContext);
+
+  const [domready, setdomready] = useState(false);
+
   const element = useRef();
   const router = useRouter();
   const path = usePathname()
-  const [deviceWidth, setdeviceWidth] = useState(0)
-
-  useEffect(() => {
-    setdeviceWidth(window.innerWidth);
-  }, [])
 
   useEffect(() => {
     router.prefetch(`/`);
@@ -25,6 +27,8 @@ const Navigation = ({ onLayout }) => {
       handleLayout();
     }
   }, [domready]);
+
+
 
   const handleLayout = () => {
     if (onLayout) {
@@ -63,21 +67,55 @@ const Navigation = ({ onLayout }) => {
         >
           <Link href={"/services"}
             className={``}
-          >Services</Link>
+          >{Translate('services', language)}</Link>
         </li>
         <li
           className={path.split("/").includes('contact') ? 'active' : ''}
         >
           <Link href={"/contact"}
             className={``}
-          >Contact</Link>
+          >{Translate('contact', language)}</Link>
         </li>
         <li className={path.split("/").includes('about') ? 'active' : ''}
         >
           <Link href={"/about"}
             className={``}
-          >About Us</Link>
+          >{Translate('about us', language)}</Link>
         </li>
+        <InputSelect
+          padding={0}
+          valueColor={"#417e38"}
+          id={"language"}
+          name={"language"}
+          value={language}
+          // width={300}
+          lineIndicator={false}
+          onChange={(e) => {
+            setlanguage(e.target.value);
+          }}
+
+          iconLeft={
+            language == "en" ?
+              <Image
+                src={"/usa.png"}
+                height={15}
+                width={20}
+                alt='usa'
+              />
+              :
+              <Image
+                src={"/arab.jpg"}
+                height={15}
+                width={20}
+                alt='arab'
+              />
+
+          }
+        // iconRight={<KeyboardArrowDownIcon fontSize={"small"} color="action" sx={{ padding: "0px" }} />}
+        >
+          <option value={"en"}>English</option>
+          <option value={"ar"}>Arabic</option>
+        </InputSelect>
       </ol>
     </Nav>
   )
