@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import AutoScroll from 'embla-carousel-auto-scroll'
 import {
@@ -10,8 +10,10 @@ import DivTag from '../../DivTag'
 import Truncate from '../../reuseable/Truncate'
 import AnimateBtn from '../../reuseable/AnimateBtn'
 import Translate from '../../Translate'
+import { CommonContext } from '../../context/CommonContext'
 
 const EmblaCarousel = (props) => {
+    const { deviceWidth } = useContext(CommonContext);
     const { slides, options, handleClick, language } = props
     const [emblaRef, emblaApi] = useEmblaCarousel(options, [
         AutoScroll({ playOnInit: false })
@@ -23,15 +25,7 @@ const EmblaCarousel = (props) => {
         nextBtnDisabled,
         onPrevButtonClick,
         onNextButtonClick
-    } = usePrevNextButtons(emblaApi)
-
-    const [deviceHeight, setdeviceHeight] = useState(0)
-    const [deviceWidth, setdeviceWidth] = useState(0)
-
-    useEffect(() => {
-        setdeviceHeight(window.innerHeight);
-        setdeviceWidth(window.innerWidth);
-    }, [])
+    } = usePrevNextButtons(emblaApi);
 
     const onButtonAutoplayClick = useCallback(
         (callback) => {
@@ -82,7 +76,7 @@ const EmblaCarousel = (props) => {
                                     padding={"15px 20px 2px 20px"}
                                     bShadow={"inset 0 0 0 0.2rem #1e1e1e"}
                                     gtr={"1fr auto"}
-                                    height={"170px"}
+                                    height={deviceWidth > 700 ? "150px" : "190px"}
                                 >
                                     <DivTag>
                                         {/* <h3 style={{ marginBottom: 10 }}>{slide.title}</h3> */}

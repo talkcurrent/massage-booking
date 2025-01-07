@@ -11,8 +11,8 @@ export default function therabonnies(language) {
             dos: [
                 `${Translate(`Individual Massage`, language)} : YES`,
                 `${Translate(`Erotic/Nuru Massage`, language)} : YES`,
-                `${Translate(`Deluxe Massage`)} : YES`,
-                "Couple's Massage : YES"
+                `${Translate(`Deluxe Massage`, language)} : YES`,
+                `${Translate(`Couple's Massage`, language)} : YES`
             ]
         },
         {
