@@ -82,7 +82,7 @@ const EmblaCarousel = (props) => {
                                     padding={"15px 20px 2px 20px"}
                                     bShadow={"inset 0 0 0 0.2rem #1e1e1e"}
                                     gtr={"1fr auto"}
-                                    height={"150px"}
+                                    height={"170px"}
                                 >
                                     <DivTag>
                                         {/* <h3 style={{ marginBottom: 10 }}>{slide.title}</h3> */}

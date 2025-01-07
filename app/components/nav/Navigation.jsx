@@ -7,6 +7,7 @@ import Translate from '../Translate';
 import InputSelect from '../form/InputSelect';
 import Image from 'next/image';
 import { CommonContext } from '../context/CommonContext';
+import DivTag from '../DivTag';
 
 const Navigation = ({ onLayout }) => {
   const { deviceHeight, deviceWidth, language, setlanguage } = useContext(CommonContext);
@@ -49,6 +50,7 @@ const Navigation = ({ onLayout }) => {
       }}
       ref={element}
     >
+
       <Link href={"/"}>
         <img
           src="/therabonnie.png"
@@ -61,62 +63,69 @@ const Navigation = ({ onLayout }) => {
           }}
         />
       </Link>
-      <ol>
-        <li
-          className={path.split("/").includes('services') ? 'active' : ''}
+      <DivTag>
+        <DivTag
+          justifySelf={"end"}
         >
-          <Link href={"/services"}
-            className={``}
-          >{Translate('services', language)}</Link>
-        </li>
-        <li
-          className={path.split("/").includes('contact') ? 'active' : ''}
-        >
-          <Link href={"/contact"}
-            className={``}
-          >{Translate('contact', language)}</Link>
-        </li>
-        <li className={path.split("/").includes('about') ? 'active' : ''}
-        >
-          <Link href={"/about"}
-            className={``}
-          >{Translate('about us', language)}</Link>
-        </li>
-        <InputSelect
-          padding={0}
-          valueColor={"#417e38"}
-          id={"language"}
-          name={"language"}
-          value={language}
-          // width={300}
-          lineIndicator={false}
-          onChange={(e) => {
-            setlanguage(e.target.value);
-          }}
+          <InputSelect
+            padding={0}
+            valueColor={"#417e38"}
+            id={"language"}
+            name={"language"}
+            value={language}
+            // width={300}
+            lineIndicator={false}
+            onChange={(e) => {
+              setlanguage(e.target.value);
+            }}
 
-          iconLeft={
-            language == "en" ?
-              <Image
-                src={"/usa.png"}
-                height={15}
-                width={20}
-                alt='usa'
-              />
-              :
-              <Image
-                src={"/arab.jpg"}
-                height={15}
-                width={20}
-                alt='arab'
-              />
+            iconLeft={
+              language == "en" ?
+                <Image
+                  src={"/usa.png"}
+                  height={15}
+                  width={20}
+                  alt='usa'
+                />
+                :
+                <Image
+                  src={"/arab.jpg"}
+                  height={15}
+                  width={20}
+                  alt='arab'
+                />
 
-          }
-        // iconRight={<KeyboardArrowDownIcon fontSize={"small"} color="action" sx={{ padding: "0px" }} />}
-        >
-          <option value={"en"}>English</option>
-          <option value={"ar"}>Arabic</option>
-        </InputSelect>
-      </ol>
+            }
+          // iconRight={<KeyboardArrowDownIcon fontSize={"small"} color="action" sx={{ padding: "0px" }} />}
+          >
+            <option value={"en"}>English</option>
+            <option value={"ar"}>Arabic</option>
+          </InputSelect>
+        </DivTag>
+        <ol>
+          <li
+            className={path.split("/").includes('services') ? 'active' : ''}
+          >
+            <Link href={"/services"}
+              className={``}
+            >{Translate('services', language)}</Link>
+          </li>
+          <li
+            className={path.split("/").includes('contact') ? 'active' : ''}
+          >
+            <Link href={"/contact"}
+              className={``}
+            >{Translate('contact', language)}</Link>
+          </li>
+          <li className={path.split("/").includes('about') ? 'active' : ''}
+          >
+            <Link href={"/about"}
+              className={``}
+            >{Translate('about us', language)}</Link>
+          </li>
+        </ol>
+
+      </DivTag>
     </Nav>
   )
 }
@@ -130,7 +139,7 @@ const Nav = styled.nav`
     display: flex;
     justify-content: flex-end;
     margin: 0;
-    padding: 10px;
+    padding: 0px;
     align-items: center;
     li{
       padding: 8px 5px;
