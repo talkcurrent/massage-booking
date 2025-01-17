@@ -7,7 +7,7 @@ export default function therabonnies(language) {
             name: "Bonnie Vasilios (Coordinator)",
             location: "UK",
             about: "about-elina",
-            photo: "bonnie.jpeg",
+            photo: "Bonnie.jpeg",
             dos: [
                 `${Translate(`Individual Massage`, language)} : YES`,
                 `${Translate(`Erotic/Nuru Massage`, language)} : YES`,

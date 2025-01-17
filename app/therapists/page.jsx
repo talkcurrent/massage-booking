@@ -28,7 +28,6 @@ const Page = () => {
     const router = useRouter();
 
     useEffect(() => {
-        console.info(bookingForm.email == "")
         if (bookingForm.email == "") {
             router.replace('/')
         }
