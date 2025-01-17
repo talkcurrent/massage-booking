@@ -10,6 +10,13 @@ export const CommonProvider = (props) => {
     const [deviceHeight, setdeviceHeight] = useState(0)
     const [deviceWidth, setdeviceWidth] = useState(0)
     const [language, setlanguage] = useState('')
+    const [service, setservice] = useState({});
+    const [bookingForm, setbookingForm] = useState({
+        fullName: '', phoneNumber: '', email: '', address: '', date: ''
+    });
+    const [bookingError, setbookingError] = useState({
+        address: false, fullName: false, phoneNumber: false, email: false, date: false
+    });
 
     useEffect(() => {
 
@@ -43,7 +50,10 @@ export const CommonProvider = (props) => {
     return (
         <CommonContext.Provider
             value={{
-                deviceHeight, deviceWidth, language, setlanguage
+                deviceHeight, deviceWidth, language, setlanguage,
+                service, setservice,
+                bookingForm, setbookingForm,
+                bookingError, setbookingError
             }}
         >
             {props.children}

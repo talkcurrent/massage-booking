@@ -4,7 +4,19 @@ import Translate from './Translate';
 export default function therabonnies(language) {
     const masseuses = [
         {
-            name: "Clara Bonnie Clerk",
+            name: "Bonnie Vasilios (Coordinator)",
+            location: "UK",
+            about: "about-elina",
+            photo: "bonnie.jpeg",
+            dos: [
+                `${Translate(`Individual Massage`, language)} : YES`,
+                `${Translate(`Erotic/Nuru Massage`, language)} : YES`,
+                `${Translate(`Deluxe Massage`, language)} : YES`,
+                `${Translate(`Couple's Massage`, language)} : YES`
+            ]
+        },
+        {
+            name: "Clara Clerk",
             location: "Australia",
             about: "about-clara",
             photo: "clara-bonnie.png",
@@ -40,7 +52,7 @@ export default function therabonnies(language) {
             ]
         },
         {
-            name: "Emiliana $ Excel",
+            name: "Emiliana & Excel",
             location: "UK",
             about: "about-emiliana-and-excel",
             photo: "duo-after-training.png",
@@ -83,18 +95,6 @@ export default function therabonnies(language) {
             dos: [
                 `${Translate(`Individual Massage`, language)} : YES`,
                 `${Translate(`Erotic/Nuru Massage`, language)} : NO`,
-                `${Translate(`Deluxe Massage`, language)} : YES`,
-                `${Translate(`Couple's Massage`, language)} : YES`
-            ]
-        },
-        {
-            name: "Elina Son",
-            location: "UK",
-            about: "about-elina",
-            photo: "shy-elina.png",
-            dos: [
-                `${Translate(`Individual Massage`, language)} : YES`,
-                `${Translate(`Erotic/Nuru Massage`, language)} : YES`,
                 `${Translate(`Deluxe Massage`, language)} : YES`,
                 `${Translate(`Couple's Massage`, language)} : YES`
             ]

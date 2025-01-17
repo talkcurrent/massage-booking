@@ -6,28 +6,28 @@ import Navigation from '@/app/components/nav/Navigation';
 import DivTag from '@/app/components/DivTag';
 import Footer from '@/app/components/nav/Footer';
 import useViewPort from '@/app/components/customHooks/useViewPort';
-import InputText from '@/app/components/form/InputText';
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import EmailIcon from "@mui/icons-material/Email";
 import HomeIcon from '@mui/icons-material/Home';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
 import Translate from '@/app/components/Translate';
 import { CommonContext } from '@/app/components/context/CommonContext';
+import AnimateBtn from '@/app/components/reuseable/AnimateBtn';
+import InputText from '@/app/components/form/InputText';
+import isValidEmail from '@/app/components/reuseable/isValidEmail';
+import { UNSAFE_createBrowserHistory, useLocation } from 'react-router';
 
 
-const Page = () => {
-    const { deviceHeight, deviceWidth, language } = useContext(CommonContext);
+const Page = (props) => {
+    const his = UNSAFE_createBrowserHistory;
+    const {
+        deviceHeight, deviceWidth, language, service,
+        bookingForm, setbookingForm,
+        bookingError, setbookingError, setservice
+    } = useContext(CommonContext);
     const services = slides();
-    const [service, setservice] = useState({})
     const [navHeight, setnavHeight] = useState(0);
-    const [form, setform] = useState({
-        fullName: '', phoneNumber: '', email: '', address: '', date: ''
-    });
-    const [error, seterror] = useState({
-        address: false, fullName: false, phoneNumber: false, email: false, date: false
-    });
 
     const articlePad = useViewPort([
         '10px', '10px', '20px', '10px 10%', '10px 20%', '10px 30%'
@@ -39,55 +39,50 @@ const Page = () => {
 
     useEffect(() => {
         const path = pathname.split('/').pop();
-        let service = services.find((serv) => serv.url === path)
+        let service = services.find((serv) => serv.url === path);
         setservice(service)
     }, []);
 
     const router = useRouter();
+    // const locatn = useLocation();
 
     useEffect(() => {
+        history()
         // router.prefetch(`/`);
         // router.prefetch(`/contact`);
         // router.prefetch(`/vission`);
     }, [])
 
-    const config = {
-        public_key: 'FLWPUBK-b407c2d81af92b2e9df00e00ea51b4d3-X',
-        tx_ref: Date.now(),
-        amount: service.cost,
-        currency: 'USD',
-        payment_options: 'card,mobilemoney,ussd',
-        customer: {
-            email: form.email,
-            phone_number: form.phoneNumber,
-            name: form.fullName,
-        },
-        customizations: {
-            title: 'TheraBonnies',
-            description: 'Booking',
-            logo: 'https://therabonnies.vercel.app/therabonnie.png',
-        },
-    };
-
-    const fwConfig = {
-        ...config,
-        text: Translate('Proceed to checkout', language),
-        callback: async (response) => {
-            setProcessingReport(true)
-            let res = await updateReport(phone)
-            if (res.ok) {
-                const { path } = res.data;
-                router.push(path);
-                setProcessingReport(false)
-            }
-            closePaymentModal() // this will close the modal programmatically
-        },
-        onClose: () => { },
-    };
-
+    const history = () => {
+        // console.info(locatn)
+    }
     const getLayout = (rect) => {
         const { height } = rect
         setnavHeight(height)
+    }
+    const handleTherapists = () => {
+        let err = false;
+        for (const key in bookingForm) {
+            if (Object.hasOwnProperty.call(bookingForm, key)) {
+                const value = bookingForm[key].length ? bookingForm[key].trim() : bookingForm[key];
+                if (key == "email" && !isValidEmail(value)) {
+                    setbookingError(prev => {
+                        return { ...prev, [key]: true }
+                    });
+                    err = !isValidEmail(value);
+                    continue;
+                }
+                if (value == "") {
+                    setbookingError(prev => {
+                        return { ...prev, [key]: true }
+                    });
+                    err = true
+                }
+            }
+        }
+        if (!err) {
+            router.push('/therapists')
+        }
     }
     return (
         <DivTag
@@ -134,7 +129,7 @@ const Page = () => {
                                 })
                                 : ""}
                         </ul> */}
-                        <h2 style={{ color: '#417e38', margin: '0.67em 0' }}>{Translate("Appointment Form", language)}:</h2>
+                        <h2 style={{ color: '#417e38', margin: '0.67em 0' }}>{Translate("membership and booking bookingForm", language)}:</h2>
                         <DivTag
                             gap={"10px"}
                             margin={'0 auto'}
@@ -154,15 +149,15 @@ const Page = () => {
                                 padding={0}
                                 id={"fullName"}
                                 name={"fullName"}
-                                value={form.fullName}
-                                error={error.fullName}
+                                value={bookingForm.fullName}
+                                error={bookingError.fullName}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
                                 placeholder={"E.g Bonnie Vasilios..."}
                                 inputColor={"black"}
                                 onChange={(e) => {
-                                    setform({ ...form, ['fullName']: e.target.value });
-                                    seterror({ ...error, ['fullName']: false });
+                                    setbookingForm({ ...bookingForm, ['fullName']: e.target.value });
+                                    setbookingError({ ...bookingError, ['fullName']: false });
                                 }}
                                 iconLeft={<PersonIcon fontSize="large" color="action" sx={{ p: "0px" }} />}
                             />
@@ -174,15 +169,15 @@ const Page = () => {
                                 padding={0}
                                 id={"phoneNumber"}
                                 name={"phoneNumber"}
-                                value={form.phoneNumber}
-                                error={error.phoneNumber}
+                                value={bookingForm.phoneNumber}
+                                error={bookingError.phoneNumber}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
                                 placeholder={"(555) 555-1234..."}
                                 inputColor={"black"}
                                 onChange={(e) => {
-                                    setform({ ...form, ['phoneNumber']: e.target.value });
-                                    seterror({ ...error, ['phoneNumber']: false });
+                                    setbookingForm({ ...bookingForm, ['phoneNumber']: e.target.value });
+                                    setbookingError({ ...bookingError, ['phoneNumber']: false });
                                 }}
                                 iconLeft={<PhoneIphoneIcon fontSize="large" color="action" sx={{ p: "0px" }} />}
                             />
@@ -194,15 +189,16 @@ const Page = () => {
                                 padding={0}
                                 id={"email"}
                                 name={"email"}
-                                value={form.email}
+                                value={bookingForm.email}
+                                error={bookingError.email}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
                                 placeholder={"example@gmail.com..."}
                                 inputColor={"black"}
                                 iconLeft={<EmailIcon fontSize="large" color="action" sx={{ padding: "0px" }} />}
                                 onChange={(e) => {
-                                    setform({ ...form, ['email']: e.target.value });
-                                    seterror({ ...error, ['email']: false });
+                                    setbookingForm({ ...bookingForm, ['email']: e.target.value });
+                                    setbookingError({ ...bookingError, ['email']: false });
                                 }}
                             />
                             <InputText
@@ -213,15 +209,15 @@ const Page = () => {
                                 padding={0}
                                 id={"address"}
                                 name={"address"}
-                                value={form.address}
-                                error={error.address}
+                                value={bookingForm.address}
+                                error={bookingError.address}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
                                 placeholder={"e.g Mr Walter MDM Enterprises INC 1401 S Main St Plummer's Landing KY 41081-1411..."}
                                 inputColor={"black"}
                                 onChange={(e) => {
-                                    setform({ ...form, ['address']: e.target.value });
-                                    seterror({ ...error, ['address']: false });
+                                    setbookingForm({ ...bookingForm, ['address']: e.target.value });
+                                    setbookingError({ ...bookingError, ['address']: false });
                                 }}
                                 iconLeft={<HomeIcon fontSize="large" color="action" sx={{ p: "0px" }} />}
                             />
@@ -234,14 +230,14 @@ const Page = () => {
                                 padding={0}
                                 id={"date"}
                                 name={"date"}
-                                value={form.date}
-                                error={error.date}
+                                value={bookingForm.date}
+                                error={bookingError.date}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
                                 inputColor={"black"}
                                 onChange={(e) => {
-                                    setform({ ...form, ['date']: e.target.value });
-                                    seterror({ ...error, ['date']: false });
+                                    setbookingForm({ ...bookingForm, ['date']: e.target.value });
+                                    setbookingError({ ...bookingError, ['date']: false });
                                 }}
                                 iconLeft={<CalendarMonthIcon fontSize="large" color="action" sx={{ p: "0px" }} />}
                             />
@@ -255,17 +251,16 @@ const Page = () => {
                             <DivTag
                                 justifySelf={"end"}
                             >
-                                {/* <AnimateBtn
-                                    btnText={"Check Out"}
+                                <AnimateBtn
+                                    btnText={Translate('Proceed to checkout', language)}
                                     bgc={'#417e38'}
                                     buttonStyle={{ padding: "5px 10px" }}
                                     justify={"center"}
                                     animateColor={"white"}
-                                    animateBgColor={"red"}
+                                    animateBgColor={"green"}
                                     color={"white"}
-                                    handleClick={() => handleClick()}
-                                /> */}
-                                <FlutterWaveButton className={"btn-pay"} disabled={form.phoneNumber.trim() == "" || form.fullName.trim() == "" || form.email.trim() == ""} {...fwConfig} />
+                                    handleClick={handleTherapists}
+                                />
                             </DivTag>
                         </DivTag>
                     </DivTag>

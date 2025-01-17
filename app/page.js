@@ -20,7 +20,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { CommonContext } from "./components/context/CommonContext";
 
 export default function Home(props) {
-  const { deviceHeight, deviceWidth, language } = useContext(CommonContext);
+  const { deviceHeight, deviceWidth, language, setservice } = useContext(CommonContext);
 
   const [coupleMassage, setcoupleMassage] = useState([])
   const [eroticMassage, seteroticMassage] = useState([])
@@ -66,6 +66,7 @@ export default function Home(props) {
   const serviceClicked = (url) => {
     const services = slides();
     let service = services.find((serv) => serv.url === url)
+    setservice(service);
     router.push('/order/' + url)
   }
 
@@ -289,10 +290,10 @@ export default function Home(props) {
                           height={200}
                           width={200}
                           alt={masseuse.name}
-                          style={{ borderRadius: "20px" }}
+                          style={{ borderRadius: "20px", objectFit: 'cover' }}
                         />
                         <DivTag tAlign={"center"} wSpace={"nowrap"}><strong>{masseuse.name}</strong></DivTag>
-                        <DivTag tAlign={"center"} wSpace={"nowrap"}><span><small>TheraBonnies,</small> {masseuse.location}</span></DivTag>
+                        {/* <DivTag tAlign={"center"} wSpace={"nowrap"}><span><small>TheraBonnies,</small> {masseuse.location}</span></DivTag> */}
                       </DivTag>
                     )
                   })

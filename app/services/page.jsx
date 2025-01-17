@@ -12,7 +12,7 @@ import Translate from '../components/Translate';
 import { CommonContext } from '../components/context/CommonContext';
 
 const Page = () => {
-    const { deviceHeight, deviceWidth, language } = useContext(CommonContext);
+    const { deviceHeight, deviceWidth, language, setservice } = useContext(CommonContext);
     const [navHeight, setnavHeight] = useState(0);
     const articlePad = useViewPort([
         '10px', '10px', '20px', '10px 10%', '10px 20%', '10px 30%'
@@ -32,7 +32,9 @@ const Page = () => {
     }
 
     const serviceClicked = (url) => {
-
+        const services = slides();
+        let service = services.find((serv) => serv.url === url)
+        setservice(service)
         router.push('/order/' + url)
     }
 

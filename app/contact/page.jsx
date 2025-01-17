@@ -65,15 +65,14 @@ const Page = () => {
                         <p style={{ margin: '1rem 0' }}>{Translate('region available', language)} :</p>
                         <DivTag gap={"2rem"}>
                             <DivTag>
-                                <p style={{ fontSize: 'large' }}>+1 828 471 7609</p>
+                                {/* <p style={{ fontSize: 'large' }}>+1 828 471 7609</p> */}
                                 <p><b>Email:</b> bonnievasilios@gmail.com</p>
                             </DivTag>
-                            <DivTag>
+                            {/* <DivTag>
                                 <p style={{ fontSize: 'large' }}>+61 489 942 698</p>
                             </DivTag>
                             <DivTag>
-                                <p><b>Email:</b> bonnievasilios@gmail.com</p>
-                            </DivTag>
+                            </DivTag> */}
                         </DivTag>
                     </DivTag>
                 </main>
