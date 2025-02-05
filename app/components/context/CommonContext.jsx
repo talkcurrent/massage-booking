@@ -19,7 +19,6 @@ export const CommonProvider = (props) => {
     });
 
     useEffect(() => {
-
         if (global?.window !== undefined) {
             setdeviceHeight(window.innerHeight);
             setdeviceWidth(window.innerWidth);

@@ -10,6 +10,8 @@ import { CommonContext } from '../components/context/CommonContext';
 import Image from 'next/image';
 import therabonnies from '../components/therabonnies';
 import { FlutterWaveButton } from 'flutterwave-react-v3';
+import { MonetizationOn } from '@mui/icons-material';
+import InputSelect from '../components/form/InputSelect';
 
 
 const Page = () => {
@@ -17,12 +19,16 @@ const Page = () => {
     const [navHeight, setnavHeight] = useState(0);
     const [processingReport, setprocessingReport] = useState(false);
     const [masseuses, setmasseuses] = useState([])
+    const [paymentMethod, setpaymentMethod] = useState(false)
 
     const imgDimension = useViewPort([
         deviceWidth - 40, deviceWidth - 30, 400, 600
     ]);
     const articlePad = useViewPort([
         '10px', '10px', '20px', '10px 10%', '10px 20%', '10px 30%'
+    ]);
+    const cardWidth = useViewPort([
+        '320px', '360px', '400px'
     ]);
 
     const router = useRouter();
@@ -31,7 +37,7 @@ const Page = () => {
         if (bookingForm.email == "") {
             router.replace('/')
         }
-        const masseuses = therabonnies(language);
+        const paymentMethod = therabonnies(language);
         setmasseuses(masseuses);
     }, [language])
 
@@ -65,7 +71,7 @@ const Page = () => {
 
     const fwConfig = {
         ...config,
-        text: processingReport ? "Please wait..." : Translate('book now', language),
+        text: processingReport ? "Please wait..." : Translate('pay with card', language),
         callback: async (response) => {
             setprocessingReport(true)
             let res = await updateReport(phone)
@@ -111,41 +117,75 @@ const Page = () => {
                         // padding={'0 15px'}
                         bSizing={'border-box'}
                     >
-                        <h2 style={{ color: '#417e38', textAlign: 'center' }}>{"TheraBonnies"}</h2>
                         <DivTag
                             margin={'2rem 0 0 0'}
                             gap={'10px'}
                             align={'center'}
                             justify={'center'}
                         >
-                            {masseuses.map((masseuse, index) => {
-                                return <DivTag
-                                    key={index}
-                                    bRadius={"1.8rem"}
-                                    padding={"5px 5px 5px 7px"}
-                                    bShadow={"inset 0 0 0 0.2rem #1e1e1e"}
-                                    gtr={"1fr auto"}
-                                    overflow={'hidden'}
+                            <DivTag
+                                color={"#417e38"}
+                            >
+                                <h2>Complete Booking Here</h2>
+                            </DivTag>
+
+                            <DivTag
+                                gap={"10px"}
+                                margin={'5px auto'}
+                                width={cardWidth}
+                                bSizing={'border-box'}
+                                bgc={'linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgb(255 255 255))'}
+                                minHeight={"max-content"}
+                                bRadius={"15px"}
+                                color={"black"}
+                                padding={'1rem 5px'}
+                            >
+                                <InputSelect
+                                    label={Translate("choose your preferred method", language)}
+                                    // padding={'10px 0 0 0'}
+                                    id={"bank"}
+                                    name={"bank"}
+                                    value={paymentMethod}
+                                    inputBgc={"#fdfdfd"}
+                                    inputColor={"black"}
+                                    valueColor={"black"}
+                                    width={"320px"}
+                                    iconLeft={<MonetizationOn fontSize="large" color="action" sx={{ padding: "0px" }} />}
+                                    onChange={(e) => setpaymentMethod(e.target.value)}
                                 >
+                                    <option value="">-- {Translate('select method', language)} --</option>
+                                    <option value="cashapp">{Translate('pay with cash app', language)}</option>
+                                    <option value="bitcoin">{Translate('pay with btc', language)}</option>
+                                    <option value="card">{Translate('pay with card', language)}</option>
+
+                                </InputSelect>
+                                {paymentMethod === "cashapp" ?
                                     <DivTag>
-                                        <Image
-                                            src={`/masseuses/${masseuse.photo}`}
-                                            height={imgDimension}
-                                            width={imgDimension}
-                                            alt={masseuse.name}
-                                            style={{ borderRadius: "20px", objectFit: 'cover' }}
-                                        // objectFit='cover'
-                                        />
-                                        <DivTag tAlign={"center"} wSpace={"nowrap"}><strong>{masseuse.name}</strong></DivTag>
-                                        {/* <DivTag tAlign={"center"} wSpace={"nowrap"}><span><small>TheraBonnies,</small> {masseuse.location}</span></DivTag> */}
+                                        <h2 style={{ margin: "0 0 5px 0" }}>{Translate('pay with cash app', language)}</h2>
+                                        <span>$BonnieVasilios</span>
                                     </DivTag>
-                                    <DivTag
-                                        justifySelf={"center"}
-                                    >
-                                        <FlutterWaveButton className={"btn-pay"} {...fwConfig} />
-                                    </DivTag>
-                                </DivTag>
-                            })}
+                                    : paymentMethod === "bitcoin" ?
+                                        <DivTag>
+                                            <h2 style={{ margin: "0 0 5px 0" }}>{Translate('pay with btc', language)}</h2>
+                                            <h5>Wallet ID:</h5> <br />
+                                            <span>1Je78DUQQLF6EgaKrsrY5NKDr1shc7fv6g</span>
+                                        </DivTag>
+                                        : paymentMethod === "card" ?
+                                            <DivTag>
+
+                                                <DivTag
+                                                    display={"flex"}
+                                                    justify={"center"}
+                                                    align={"center"}
+                                                    gtc={"1fr"}
+                                                    margin={"15px 0 0 0"}
+                                                >
+                                                    <FlutterWaveButton className={"btn-pay"} {...fwConfig} />
+
+                                                </DivTag>
+                                            </DivTag>
+                                            : ""}
+                            </DivTag>
                         </DivTag>
                     </DivTag>
                 </main>

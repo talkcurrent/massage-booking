@@ -63,9 +63,10 @@ const Navigation = ({ onLayout }) => {
           }}
         />
       </Link>
-      <DivTag>
+      <DivTag >
         <DivTag
           justifySelf={"end"}
+          padding={"5px 0"}
         >
           <InputSelect
             padding={0}

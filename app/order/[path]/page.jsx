@@ -225,7 +225,7 @@ const Page = (props) => {
                                 tabIndex={"4"}
                                 label={Translate("appointment day", language)}
                                 staticLabel={true}
-                                inputType={"date"}
+                                inputType={"datetime-local"}
                                 autoComplete={"false"}
                                 padding={0}
                                 id={"date"}
@@ -249,12 +249,12 @@ const Page = (props) => {
                             >
                             </DivTag>
                             <DivTag
-                                justifySelf={"end"}
+                                justifySelf={"center"}
                             >
                                 <AnimateBtn
                                     btnText={Translate('Proceed to checkout', language)}
                                     bgc={'#417e38'}
-                                    buttonStyle={{ padding: "5px 10px" }}
+                                    buttonStyle={{ padding: "10px 15px", fontSize: 18 }}
                                     justify={"center"}
                                     animateColor={"white"}
                                     animateBgColor={"green"}
