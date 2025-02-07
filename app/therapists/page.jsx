@@ -15,7 +15,7 @@ import InputSelect from '../components/form/InputSelect';
 
 
 const Page = () => {
-    const { deviceHeight, deviceWidth, language, bookingForm, service } = useContext(CommonContext);
+    const { deviceHeight, deviceWidth, language, bookingForm, service, currency } = useContext(CommonContext);
     const [navHeight, setnavHeight] = useState(0);
     const [processingReport, setprocessingReport] = useState(false);
     const [masseuses, setmasseuses] = useState([])
@@ -55,7 +55,7 @@ const Page = () => {
         public_key: 'FLWPUBK-b407c2d81af92b2e9df00e00ea51b4d3-X',
         tx_ref: Date.now(),
         amount: service.cost,
-        currency: 'USD',
+        currency: currency.name,
         payment_options: 'card,mobilemoney,ussd',
         customer: {
             email: bookingForm.email,

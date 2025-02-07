@@ -7,27 +7,27 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { CommonContext } from '../context/CommonContext';
 
 const Footer = () => {
-    const { deviceHeight, deviceWidth } = useContext(CommonContext);
+  const { deviceHeight, deviceWidth } = useContext(CommonContext);
 
-    return (
-        <footer
-            style={{
-                marginTop: 30
-            }}
-        >
-            <Nav
-                style={{
-                    background: '#0a0f15',
-                    color: 'white',
-                    padding: `20px ${((5 / 100) * deviceWidth)}px`,
-                    display: 'grid',
-                    gridTemplateColumns: 'auto 1fr',
-                    alignItems: 'center',
+  return (
+    <footer
+      style={{
+        marginTop: 30
+      }}
+    >
+      <Nav
+        style={{
+          background: '#0a0f15',
+          color: 'white',
+          padding: `20px ${((5 / 100) * deviceWidth)}px`,
+          display: 'grid',
+          gridTemplateColumns: 'auto 1fr',
+          alignItems: 'center',
 
-                }}
-            >
-                <div style={{ color: 'silver' }}>© 2024 therabonnies.vercel.app</div>
-                {/* <ol>
+        }}
+      >
+        <div style={{ color: 'silver' }}>© 2025 tPurse.com</div>
+        {/* <ol>
                     <li style={{ color: 'silver' }}>Follow us:</li>
                     <li><Link href={"/#"}>
                         <FacebookIcon fontSize="large" color="action" sx={{ p: "0px", color: 'blue' }} />
@@ -35,9 +35,9 @@ const Footer = () => {
                     <li><Link href={"/#"}><XIcon fontSize="medium" color="action" sx={{ p: "0px", color: 'silver' }} /></Link></li>
                     <li><Link href={"/#"}><LinkedInIcon fontSize="large" color="action" sx={{ p: "0px", color: 'silver' }} /></Link></li>
                 </ol> */}
-            </Nav>
-        </footer>
-    )
+      </Nav>
+    </footer>
+  )
 }
 
 export default Footer;

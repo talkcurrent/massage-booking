@@ -13,7 +13,7 @@ import Translate from '../../Translate'
 import { CommonContext } from '../../context/CommonContext'
 
 const EmblaCarousel = (props) => {
-    const { deviceWidth } = useContext(CommonContext);
+    const { deviceWidth, currency } = useContext(CommonContext);
     const { slides, options, handleClick, language } = props
     const [emblaRef, emblaApi] = useEmblaCarousel(options, [
         AutoScroll({ playOnInit: false })
@@ -82,7 +82,7 @@ const EmblaCarousel = (props) => {
                                         {/* <h3 style={{ marginBottom: 10 }}>{slide.title}</h3> */}
                                         <p style={{ color: 'white', textAlign: 'left' }}>{slide.body && Truncate(Translate(slide.body, language), 30)}</p>
                                         <p style={{ fontFamily: 'monospace', color: '#b4b4b4', fontSize: 'large' }}>
-                                            <b>{Translate(slide.duration, language)}</b>
+                                            <b>{Translate(slide.duration, language)} - {`${currency.symbol}${slide.cost}`}</b>
                                         </p>
                                     </DivTag>
                                     <DivTag
