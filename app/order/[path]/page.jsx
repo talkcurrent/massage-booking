@@ -153,7 +153,7 @@ const Page = (props) => {
                                 error={bookingError.fullName}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
-                                placeholder={"E.g Bonnie Vasilios..."}
+                                placeholder={"E.g John Doe..."}
                                 inputColor={"black"}
                                 onChange={(e) => {
                                     setbookingForm({ ...bookingForm, ['fullName']: e.target.value });
@@ -161,7 +161,7 @@ const Page = (props) => {
                                 }}
                                 iconLeft={<PersonIcon fontSize="large" color="action" sx={{ p: "0px" }} />}
                             />
-                            <InputText
+                            {/* <InputText
                                 tabIndex={"2"}
                                 label={Translate("Phone Number", language)}
                                 inputType={"text"}
@@ -180,7 +180,7 @@ const Page = (props) => {
                                     setbookingError({ ...bookingError, ['phoneNumber']: false });
                                 }}
                                 iconLeft={<PhoneIphoneIcon fontSize="large" color="action" sx={{ p: "0px" }} />}
-                            />
+                            /> */}
                             <InputText
                                 tabIndex={"3"}
                                 label={Translate("email", language)}
@@ -193,7 +193,7 @@ const Page = (props) => {
                                 error={bookingError.email}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
-                                placeholder={"example@gmail.com..."}
+                                placeholder={"e.g customer@email.com..."}
                                 inputColor={"black"}
                                 iconLeft={<EmailIcon fontSize="large" color="action" sx={{ padding: "0px" }} />}
                                 onChange={(e) => {
@@ -213,7 +213,7 @@ const Page = (props) => {
                                 error={bookingError.address}
                                 inputBgc={"#fdfdfd"}
                                 width={"320px"}
-                                placeholder={"e.g Mr Walter MDM Enterprises INC 1401 S Main St Plummer's Landing KY 41081-1411..."}
+                                placeholder={"e.g This is where you'll like to have your session..."}
                                 inputColor={"black"}
                                 onChange={(e) => {
                                     setbookingForm({ ...bookingForm, ['address']: e.target.value });

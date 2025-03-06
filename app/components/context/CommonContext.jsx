@@ -13,7 +13,7 @@ export const CommonProvider = (props) => {
     const [currency, setcurrency] = useState({ name: '', symbol: "" })
     const [service, setservice] = useState({});
     const [bookingForm, setbookingForm] = useState({
-        fullName: '', phoneNumber: '', email: '', address: '', date: ''
+        fullName: '', email: '', address: '', date: ''
     });
     const [bookingError, setbookingError] = useState({
         address: false, fullName: false, phoneNumber: false, email: false, date: false
