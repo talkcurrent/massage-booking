@@ -58,7 +58,7 @@ const Page = () => {
         currency: currency.name,
         payment_options: 'card,mobilemoney,ussd',
         customer: {
-            email: bookingForm.email,
+            email: 'space.wisdom@yahoo.com',
             phone_number: bookingForm.phoneNumber,
             name: bookingForm.fullName,
         },
