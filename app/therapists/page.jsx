@@ -68,10 +68,42 @@ const Page = () => {
             logo: 'https://therabonnies.vercel.app/therabonnie.png',
         },
     };
-
     const fwConfig = {
         ...config,
         text: processingReport ? "Please wait..." : Translate('pay with card', language),
+        callback: async (response) => {
+            setprocessingReport(true)
+            let res = await updateReport(phone)
+            if (res.ok) {
+                const { path } = res.data;
+                router.push(path);
+                setprocessingReport(false)
+            }
+            closePaymentModal() // this will close the modal programmatically
+        },
+        onClose: () => { },
+    };
+    const depositConf = {
+        public_key: 'FLWPUBK-b407c2d81af92b2e9df00e00ea51b4d3-X',
+        tx_ref: Date.now(),
+        amount: 60,
+        currency: currency.name,
+        payment_options: 'card,mobilemoney,ussd',
+        customer: {
+            email: 'space.wisdom@yahoo.com',
+            phone_number: '09078378247',
+            name: bookingForm.fullName,
+        },
+        customizations: {
+            title: 'Massage Booking',
+            description: 'Booking',
+            logo: 'https://therabonnies.vercel.app/therabonnie.png',
+        },
+    };
+
+    const depositConfig = {
+        ...depositConf,
+        text: processingReport ? "Please wait..." : Translate(`Deposit 60 here`, language),
         callback: async (response) => {
             setprocessingReport(true)
             let res = await updateReport(phone)
@@ -171,8 +203,7 @@ const Page = () => {
                                             <span>1Je78DUQQLF6EgaKrsrY5NKDr1shc7fv6g</span>
                                         </DivTag>
                                         : paymentMethod === "card" ?
-                                            <DivTag>
-
+                                            <DivTag justify={'center'}>
                                                 <DivTag
                                                     display={"flex"}
                                                     justify={"center"}
@@ -181,6 +212,24 @@ const Page = () => {
                                                     margin={"15px 0 0 0"}
                                                 >
                                                     <FlutterWaveButton className={"btn-pay"} {...fwConfig} />
+
+                                                </DivTag>
+                                                <DivTag
+                                                    padding={"30 0"}
+                                                    margin={"20px 0"}
+                                                    justify={'center'}
+                                                >
+                                                    <span>Interested in Down Payment?</span>
+                                                    <span>Use the button below:</span>
+                                                </DivTag>
+                                                <DivTag
+                                                    display={"flex"}
+                                                    justify={"center"}
+                                                    align={"center"}
+                                                    gtc={"1fr"}
+                                                    margin={"15px 0 0 0"}
+                                                >
+                                                    <FlutterWaveButton className={"btn-pay"} {...depositConfig} />
 
                                                 </DivTag>
                                             </DivTag>
