@@ -46,11 +46,6 @@ const Page = () => {
         setnavHeight(height)
     }
 
-    const serviceClicked = (url) => {
-
-        router.push('/order/' + url)
-    }
-
     const config = {
         public_key: 'FLWPUBK-b407c2d81af92b2e9df00e00ea51b4d3-X',
         tx_ref: Date.now(),
@@ -97,7 +92,7 @@ const Page = () => {
         customizations: {
             title: 'Massage Booking',
             description: 'Booking',
-            logo: 'https://therabonnies.vercel.app/therabonnie.png',
+            logo: 'https://www.tpurse.com/therabonnie.png',
         },
     };
 
@@ -105,13 +100,7 @@ const Page = () => {
         ...depositConf,
         text: processingReport ? "Please wait..." : Translate(`Deposit 60 here`, language),
         callback: async (response) => {
-            setprocessingReport(true)
-            let res = await updateReport(phone)
-            if (res.ok) {
-                const { path } = res.data;
-                router.push(path);
-                setprocessingReport(false)
-            }
+
             closePaymentModal() // this will close the modal programmatically
         },
         onClose: () => { },
@@ -212,24 +201,6 @@ const Page = () => {
                                                     margin={"15px 0 0 0"}
                                                 >
                                                     <FlutterWaveButton className={"btn-pay"} {...fwConfig} />
-
-                                                </DivTag>
-                                                <DivTag
-                                                    padding={"30 0"}
-                                                    margin={"20px 0"}
-                                                    justify={'center'}
-                                                >
-                                                    <span>Interested in Down Payment?</span>
-                                                    <span>Use the button below:</span>
-                                                </DivTag>
-                                                <DivTag
-                                                    display={"flex"}
-                                                    justify={"center"}
-                                                    align={"center"}
-                                                    gtc={"1fr"}
-                                                    margin={"15px 0 0 0"}
-                                                >
-                                                    <FlutterWaveButton className={"btn-pay"} {...depositConfig} />
 
                                                 </DivTag>
                                             </DivTag>

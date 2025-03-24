@@ -41,6 +41,7 @@ export default function Home(props) {
   const router = useRouter();
 
   useEffect(() => {
+    router.prefetch(`/extra`);
     const reviews = testimonies();
     setreviews(reviews);
 
@@ -229,6 +230,26 @@ export default function Home(props) {
                 handleClick={serviceClicked}
               />
             </DivTag>
+          </DivTag>
+          <DivTag
+            margin={'20px 0 0 0'}
+            justify={'start'}
+            gap={'10px'}
+          >
+            <DivTag>
+              <p style={{ color: 'white' }}>In case you have negotiated an additional fee beyond our service cost, please use the button bellow:</p>
+            </DivTag>
+            <Link
+              href={"/extra"}
+              style={{
+                backgroundColor: "#417e38",
+                padding: "5px 10px",
+                textAlign: 'center',
+                color: 'white',
+                borderRadius: 20,
+                marginBottom: 5
+              }}
+            >{Translate("Additional payment", language)}</Link>
           </DivTag>
         </DivTag>
         <DivTag>

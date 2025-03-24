@@ -1,3 +1,4 @@
+"use client"
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import AutoScroll from 'embla-carousel-auto-scroll'
@@ -11,10 +12,12 @@ import Truncate from '../../reuseable/Truncate'
 import AnimateBtn from '../../reuseable/AnimateBtn'
 import Translate from '../../Translate'
 import { CommonContext } from '../../context/CommonContext'
+import Link from 'next/link'
 
 const EmblaCarousel = (props) => {
     const { deviceWidth, currency } = useContext(CommonContext);
     const { slides, options, handleClick, language } = props
+
     const [emblaRef, emblaApi] = useEmblaCarousel(options, [
         AutoScroll({ playOnInit: false })
     ])
@@ -26,6 +29,7 @@ const EmblaCarousel = (props) => {
         onPrevButtonClick,
         onNextButtonClick
     } = usePrevNextButtons(emblaApi);
+
 
     const onButtonAutoplayClick = useCallback(
         (callback) => {
@@ -81,15 +85,26 @@ const EmblaCarousel = (props) => {
                                     <DivTag>
                                         {/* <h3 style={{ marginBottom: 10 }}>{slide.title}</h3> */}
                                         <p style={{ color: 'white', textAlign: 'left' }}>{slide.body && Truncate(Translate(slide.body, language), 30)}</p>
-                                        <p style={{ fontFamily: 'monospace', color: '#b4b4b4', fontSize: 'large' }}>
-                                            <b>{Translate(slide.duration, language)} - {`${currency.symbol}${slide.cost}`}</b>
+                                        <p style={{ color: '#b4b4b4', fontSize: 'medium', height: 'max-content' }}>
+                                            <b style={{ color: '#b4b4b4' }}>{Translate(slide.duration, language)} - {`${currency.symbol}${slide.cost}`}</b>
                                         </p>
                                     </DivTag>
                                     <DivTag
                                         justifySelf={"end"}
                                     >
-                                        <AnimateBtn
-                                            btnText={Translate("Book Now", language)}
+                                        <Link
+                                            href={"/order/" + slide.url}
+                                            style={{
+                                                backgroundColor: "#417e38",
+                                                padding: "5px 10px",
+                                                textAlign: 'center',
+                                                color: 'white',
+                                                borderRadius: 20,
+                                                marginBottom: 5
+                                            }}
+                                        >{Translate("Book Now", language)}</Link>
+                                        {/* <AnimateBtn
+                                            btnText={""}
                                             bgc={'#417e38'}
                                             buttonStyle={{ padding: "5px 10px" }}
                                             justify={"center"}
@@ -97,7 +112,7 @@ const EmblaCarousel = (props) => {
                                             animateBgColor={"green"}
                                             color={"white"}
                                             handleClick={() => handleClick(slide.url)}
-                                        />
+                                        /> */}
                                     </DivTag>
                                 </DivTag>
                             </div>

@@ -47,9 +47,14 @@ const Page = () => {
             overflow={"auto"}
             gtr={"auto 1fr auto"}
         >
-            <Navigation
-                onLayout={getLayout}
-            />
+            <DivTag
+                position={'sticky'}
+                top={'0px'}
+                zIndex={"100"}
+                maxWidth={deviceWidth + "px"}
+            >
+                <Navigation onLayout={getLayout} />
+            </DivTag>
             <DivTag
                 height={'max-content'}
             >

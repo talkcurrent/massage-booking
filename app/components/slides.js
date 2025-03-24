@@ -135,7 +135,7 @@ export default function slides() {
         {
             title: 'Erotic/Nuru Massage',
             body: "Deep Tissue Massage, Reflexology, Hot Stone Massage or Shiatsu Massage with happy ending",
-            duration: '3hrs (2 masseuses)',
+            duration: '3hrs',
             cost: 500,
             url: "deep_tissue_massage_reflexology_massage_hot_stone_massage_or_shiatsu_massage_with_happy_ending_2_masseuses",
             description: {

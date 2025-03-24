@@ -33,7 +33,7 @@ export const CommonProvider = (props) => {
 
 
             if (locale == 'en-CA') {
-                // it is the UK 
+                // it is Canada 
                 setcurrency({ name: "CAD", symbol: '$' });
             } else if (continent.toLowerCase() == 'europe' && locale == 'en-GB') {
                 // it is the UK 
