@@ -1,13 +1,26 @@
 import React from 'react'
 
 export default function slides() {
+    const international = Intl?.DateTimeFormat().resolvedOptions();
+    let timeZ = international.timeZone;
+    let locale = international.locale;
+    const continent = timeZ.split('/')[0];
+
+    const calcPerc = (amount) => {
+        switch (continent.toLowerCase()) {
+            case 'europe':
+                return (60 / 100) * amount;
+            default:
+                return amount;
+        }
+    }
 
     const theraSlides = [
         {
             title: 'Individual Massage',
             body: 'Deep Tissue Massage with Hot Stone & Foot Massage Treatment',
             duration: '1hr, 30mins',
-            cost: 100,
+            cost: calcPerc(100),
             url: "deep_tissue_massage_with_hot_stone_and_foot_massage_treatment",
             description: {
                 detail: 'Treat yourself to a moment of tranquility with a tailored, one-on-one massage designed to ease tension, reduce stress, and revitalize your body and mind.',
@@ -22,7 +35,7 @@ export default function slides() {
             title: 'Individual Massage',
             body: 'Head Neck Shoulder Back Hands Therapy Hot Stone Massage & Foot Treatment',
             duration: '1hr, 40mins',
-            cost: 120,
+            cost: calcPerc(120),
             url: "head_neck_shoulder_back_hands_therapy_hot_stone_massage_and_foot_treatment",
             description: {
                 detail: 'Treat yourself to a moment of tranquility with a tailored, one-on-one massage designed to ease tension, reduce stress, and revitalize your body and mind.',
@@ -37,7 +50,7 @@ export default function slides() {
             title: 'Deluxe Massage',
             body: 'Swedish, Deep Tissue, Hot Stone Therapy, Aromatherapy, and Reflexology (All-Round Massage)',
             duration: '2hrs',
-            cost: 180,
+            cost: calcPerc(180),
             url: "luxurious_hrs_swedish_deep_tissue_hot_stone_aromatherapy_and_reflexology_massage",
             description: {
                 detail: "Unwind, recharge, and pamper yourself with our exclusive Deluxe Massage. Designed for those who seek the ultimate in relaxation and rejuvenation, this luxurious treatment combines the best of massage therapy, premium products, and serene ambiance for a truly indulgent experience.",
@@ -54,7 +67,7 @@ export default function slides() {
             title: 'Deluxe Massage',
             body: 'Swedish, Deep Tissue, Hot Stone Therapy, Aromatherapy, and Reflexology (All-Round Massage)',
             duration: '2hr, 30mins',
-            cost: 250,
+            cost: calcPerc(250),
             url: "luxurious_2_30mins_swedish_deep_tissue_hot_stone_aromatherapy_and_reflexology_massage",
             description: {
                 detail: "Unwind, recharge, and pamper yourself with our exclusive Deluxe Massage. Designed for those who seek the ultimate in relaxation and rejuvenation, this luxurious treatment combines the best of massage therapy, premium products, and serene ambiance for a truly indulgent experience.",
@@ -71,7 +84,7 @@ export default function slides() {
             title: 'Deluxe Massage',
             body: 'Swedish, Deep Tissue, Hot Stone Therapy, Aromatherapy, and Reflexology (All-Round Massage)',
             duration: '3hrs',
-            cost: 300,
+            cost: calcPerc(300),
             url: "luxurious_3hrs_swedish_deep_tissue_hot_stone_aromatherapy_and_reflexology_massage",
             description: {
                 detail: "Unwind, recharge, and pamper yourself with our exclusive Deluxe Massage. Designed for those who seek the ultimate in relaxation and rejuvenation, this luxurious treatment combines the best of massage therapy, premium products, and serene ambiance for a truly indulgent experience.",
@@ -88,7 +101,7 @@ export default function slides() {
             title: 'Erotic/Nuru Massage',
             body: 'Head, Neck, Shoulder, Back, Hands Therapy, Hot Stone Massage or Foot Treatment',
             duration: '2hrs, 50mins',
-            cost: 200,
+            cost: calcPerc(150),
             url: "head_neck_shoulder_back_hands_therapy_hot_stone_massage_or_foot_treatment",
             description: {
                 detail: 'Unleash your senses and explore a world of indulgence with our Erotic Massage experience, where relaxation and sensuality meet in perfect harmony. Designed for those who seek a deeper, more intimate form of relaxation, our erotic massage offers a unique journey to enhance connection, release tension, and awaken your senses.',
@@ -104,7 +117,7 @@ export default function slides() {
             title: 'Erotic/Nuru Massage',
             body: 'Deep Tissue Massage, Reflexology (Foot and Hand) Massage, Hot Stone Massage or Shiatsu Massage',
             duration: '2hrs, 50mins',
-            cost: 250,
+            cost: calcPerc(150),
             url: "deep_tissue_massage_reflexology_massage_hot_stone_massage_or_shiatsu_massage",
             description: {
                 detail: 'Unleash your senses and explore a world of indulgence with our Erotic Massage experience, where relaxation and sensuality meet in perfect harmony. Designed for those who seek a deeper, more intimate form of relaxation, our erotic massage offers a unique journey to enhance connection, release tension, and awaken your senses.',
@@ -120,7 +133,7 @@ export default function slides() {
             title: 'Erotic/Nuru Massage',
             body: 'Deep Tissue Massage, Reflexology, Hot Stone Massage or Shiatsu Massage with happy ending',
             duration: '2hrs',
-            cost: 350,
+            cost: calcPerc(250),
             url: "deep_tissue_massage_reflexology_massage_hot_stone_massage_or_shiatsu_massage_with_happy_ending",
             description: {
                 detail: 'Unleash your senses and explore a world of indulgence with our Erotic Massage experience, where relaxation and sensuality meet in perfect harmony. Designed for those who seek a deeper, more intimate form of relaxation, our erotic massage offers a unique journey to enhance connection, release tension, and awaken your senses.',
@@ -136,7 +149,7 @@ export default function slides() {
             title: 'Erotic/Nuru Massage',
             body: "Deep Tissue Massage, Reflexology, Hot Stone Massage or Shiatsu Massage with happy ending",
             duration: '3hrs',
-            cost: 500,
+            cost: calcPerc(350),
             url: "deep_tissue_massage_reflexology_massage_hot_stone_massage_or_shiatsu_massage_with_happy_ending_2_masseuses",
             description: {
                 detail: 'Unleash your senses and explore a world of indulgence with our Erotic Massage experience, where relaxation and sensuality meet in perfect harmony. Designed for those who seek a deeper, more intimate form of relaxation, our erotic massage offers a unique journey to enhance connection, release tension, and awaken your senses.',
@@ -152,7 +165,7 @@ export default function slides() {
             title: "Couple's Massage",
             body: "Couples Head, Neck, Shoulder, Back, Hands Therapy, Hot Stone Massage & Foot Treatment",
             duration: "2hrs",
-            cost: 350,
+            cost: calcPerc(300),
             url: "head_neck_shoulder_back_hands_therapy_hot_stone_massage_and_foot_treatment_couples",
             description: {
                 detail: "Create lasting memories with a shared experience that soothes both body and soul. Our Couple's Massage offers the perfect opportunity to relax, rejuvenate, and reconnect with your partner in a tranquil, private setting. Whether it's for a romantic escape, a special celebration, or simply an opportunity to enjoy quality time together, our personalized massages will leave you both feeling refreshed and revitalized.",
@@ -168,7 +181,7 @@ export default function slides() {
             title: "Couple's Massage",
             body: "Swedish Massage with Hot Stone or Deep Tissue Massage with Hot Stone",
             duration: "1hr, 30mins",
-            cost: 250,
+            cost: calcPerc(200),
             url: "sweedish_massage_with_hot_stone_or_deep_tissue_massage_with_hot_stone",
             description: {
                 detail: "Create lasting memories with a shared experience that soothes both body and soul. Our Couple's Massage offers the perfect opportunity to relax, rejuvenate, and reconnect with your partner in a tranquil, private setting. Whether it's for a romantic escape, a special celebration, or simply an opportunity to enjoy quality time together, our personalized massages will leave you both feeling refreshed and revitalized.",

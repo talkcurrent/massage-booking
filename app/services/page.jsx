@@ -12,7 +12,7 @@ import Translate from '../components/Translate';
 import { CommonContext } from '../components/context/CommonContext';
 
 const Page = () => {
-    const { deviceHeight, deviceWidth, language, setservice } = useContext(CommonContext);
+    const { deviceHeight, deviceWidth, language, setservice, currency } = useContext(CommonContext);
     const [navHeight, setnavHeight] = useState(0);
     const articlePad = useViewPort([
         '10px', '10px', '20px', '10px 10%', '10px 20%', '10px 30%'
@@ -92,7 +92,7 @@ const Page = () => {
                                     <DivTag>
                                         <h3 style={{ marginBottom: 10 }}>{Translate(service.title, language)}</h3>
                                         <p style={{ color: '#b4b4b4', textAlign: 'left' }}>{service.body && Truncate(Translate(service.body, language), 30)}</p>
-                                        <p style={{ fontFamily: 'monospace', color: '#b4b4b4', fontSize: 'large' }}><b>{Translate(service.duration, language)}</b></p>
+                                        <p style={{ fontFamily: 'monospace', color: '#b4b4b4', fontSize: 'large' }}><b>{Translate(service.duration, language)} - {currency.symbol}{service.cost}</b></p>
                                     </DivTag>
                                     <DivTag
                                         justifySelf={"end"}
